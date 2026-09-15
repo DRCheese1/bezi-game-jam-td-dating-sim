@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cjc4qsiu5lnpy"]
+
+[ext_resource type="Script" uid="uid://m0qfvrgf8he" path="res://src/gameplay/enemies/doubt/doubt_enemy.gd" id="1_2o6y3"]
+[ext_resource type="Texture2D" uid="uid://bvdv7g42livr6" path="res://icon.svg" id="2_42wgi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phkuc"]
+size = Vector2(127, 124)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7kha"]
+bg_color = Color(1, 0.1878809, 0.13868281, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5237787, 0.5420105, 0.53744, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="DoubtEnemy" type="Area2D" unique_id=1942149697 groups=["enemies"]]
+scale = Vector2(0.25, 0.25)
+collision_mask = 0
+script = ExtResource("1_2o6y3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=498857640]
+shape = SubResource("RectangleShape2D_phkuc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=37349970]
+texture = ExtResource("2_42wgi")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1024666026]
+offset_left = -64.0
+offset_top = -89.0
+offset_right = 64.0
+offset_bottom = -75.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_s7kha")
+min_value = 100.0
+value = 100.0
+show_percentage = false

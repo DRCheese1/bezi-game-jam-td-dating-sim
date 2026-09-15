@@ -1,0 +1,57 @@
+extends Area2D
+
+@export var distance: float = 0
+@export var speed: float = 50
+@export var health: float = 100
+@export var path_2d: Path2D
+
+var path_length: float = 0.0
+var flash_tween: Tween
+
+@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
+func _ready() -> void:
+	progress_bar.max_value = health
+	progress_bar.value = health
+	
+	if path_2d:
+		path_length = path_2d.curve.get_baked_length()
+
+
+func _process(delta: float) -> void:
+	distance += speed * delta
+	
+	if distance >= path_length:
+		_reached_end()
+		return
+	
+	# Calculating position based on distance travelled
+	var local_point: Vector2 = path_2d.curve.sample_baked(distance)
+	var tangent: Vector2 = path_2d.curve.sample_baked_with_rotation(distance).x
+	global_position = path_2d.to_global(local_point)
+	rotation = tangent.angle()
+
+
+func _reached_end() -> void:
+	print("Reached end")
+	queue_free()
+
+
+func take_damage(amount: float):
+	health -= amount
+	progress_bar.value = health
+	print("Health: ", health, " | Bar value: ", progress_bar.value)
+	_flash_hit()
+	
+	if health <= 0:
+		queue_free()
+
+func _flash_hit() -> void:
+	if flash_tween:
+		flash_tween.kill()  # stop any in-progress flash so hits don't stack weirdly
+
+	sprite_2d.modulate = Color(2, 2, 2)  # overshoot brighter than white for a punchier flash
+
+	flash_tween = create_tween()
+	flash_tween.tween_property(sprite_2d, "modulate", Color(1, 1, 1), 0.15)

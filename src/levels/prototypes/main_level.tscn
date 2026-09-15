@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://mjw7nnkh7bhy"]
+
+[ext_resource type="Script" uid="uid://b3ot5ernuhm2y" path="res://src/levels/prototypes/path_2d_spawner.gd" id="1_m2uio"]
+[ext_resource type="PackedScene" uid="uid://df4mpnejinede" path="res://src/gameplay/towers/test_tower/test_tower.tscn" id="2_t2i1b"]
+
+[sub_resource type="Curve2D" id="Curve2D_mxip6"]
+_data = {
+"points": PackedVector2Array(2.2702703, 56.756752, -2.2702703, -56.756752, 164, 278, 0, 0, 0, 0, 246, 215, 0, 0, 0, 0, 329.43246, 215.85135, -3.972973, 30.648647, 3.972973, -30.648647, 406.90543, 186.05405, 0, 0, 0, 0, 330.2838, 150.2973, 0, 0, 0, 0, 234.93245, 147.74324, 1.6074464, 32.684746, -1.6074464, -32.684746, 163.41893, 117.09459)
+}
+point_count = 7
+
+[node name="MainLevel" type="Node2D" unique_id=383300953]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=927285649]
+position = Vector2(-38.250454, -51.445618)
+scale = Vector2(1.1310993, 1.1310995)
+curve = SubResource("Curve2D_mxip6")
+script = ExtResource("1_m2uio")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1142160473]
+position = Vector2(315, 184)
+
+[node name="TestTower" parent="." unique_id=1231075861 instance=ExtResource("2_t2i1b")]
+position = Vector2(368, 156)
+damage = 25.0
