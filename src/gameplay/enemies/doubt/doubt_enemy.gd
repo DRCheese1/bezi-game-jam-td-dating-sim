@@ -3,15 +3,19 @@ extends Area2D
 @export var distance: float = 0
 @export var speed: float = 50
 @export var health: float = 100
+@export var damage: float = 15
 @export var path_2d: Path2D
 
 var path_length: float = 0.0
 var flash_tween: Tween
+var relationship_system: System
 
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 func _ready() -> void:
+	relationship_system = GameManager.access_system("Relationship")
+	
 	progress_bar.max_value = health
 	progress_bar.value = health
 	
@@ -28,20 +32,18 @@ func _process(delta: float) -> void:
 	
 	# Calculating position based on distance travelled
 	var local_point: Vector2 = path_2d.curve.sample_baked(distance)
-	var tangent: Vector2 = path_2d.curve.sample_baked_with_rotation(distance).x
 	global_position = path_2d.to_global(local_point)
-	rotation = tangent.angle()
 
 
 func _reached_end() -> void:
 	print("Reached end")
+	relationship_system.modify_relationship(-damage)
 	queue_free()
 
 
 func take_damage(amount: float):
 	health -= amount
 	progress_bar.value = health
-	print("Health: ", health, " | Bar value: ", progress_bar.value)
 	_flash_hit()
 	
 	if health <= 0:

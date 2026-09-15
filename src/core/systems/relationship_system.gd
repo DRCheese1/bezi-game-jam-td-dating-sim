@@ -2,6 +2,7 @@ extends System
 
 signal currency_changed(currency_type: String, new_amount: float)
 signal relationship_changed(new_value: float)
+signal relationship_failed
 signal day_advanced(day_number: int)
 
 var currencies: Dictionary = {
@@ -42,6 +43,9 @@ func apply_vulnerability_risk(amount: float, success_chance: float) -> void:
 func modify_relationship(delta: float) -> void:
 	relationship_health = clampf(relationship_health + delta, 0.0, 100.0)
 	relationship_changed.emit(relationship_health)
+	
+	if relationship_health <= 0.0:
+		relationship_failed.emit()
 
 func advance_day() -> void:
 	current_day += 1

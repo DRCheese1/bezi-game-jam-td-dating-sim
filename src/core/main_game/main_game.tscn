@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://bo46jcmgholll"]
 
 [ext_resource type="Script" uid="uid://jvpc1nn4kdwj" path="res://src/core/main_game/main_game.gd" id="1_3fed5"]
-[ext_resource type="Script" uid="uid://c56lykmc0txot" path="res://src/core/systems/currency_system.gd" id="2_6yl8a"]
+[ext_resource type="Script" uid="uid://c56lykmc0txot" path="res://src/core/systems/relationship_system.gd" id="2_6yl8a"]
 [ext_resource type="PackedScene" uid="uid://mjw7nnkh7bhy" path="res://src/levels/prototypes/main_level.tscn" id="3_6n4xl"]
+[ext_resource type="PackedScene" uid="uid://bkra48siwq6jd" path="res://src/debug/debug_overlay/debug_overlay.tscn" id="4_ibp4d"]
+[ext_resource type="PackedScene" uid="uid://df4mpnejinede" path="res://src/gameplay/towers/test_tower/test_tower.tscn" id="4_n4iq1"]
+[ext_resource type="Script" uid="uid://bmfls3dcd2v1w" path="res://src/debug/debug_root.gd" id="4_tk58t"]
 
 [node name="MainGame" type="Node" unique_id=1086910331]
 process_mode = 3
@@ -12,6 +15,7 @@ script = ExtResource("1_3fed5")
 
 [node name="Relationship" type="Node" parent="Systems" unique_id=852301708]
 script = ExtResource("2_6yl8a")
+system_name = "Relationship"
 metadata/_custom_type_script = "uid://brvewxiiwrnkv"
 
 [node name="World" type="Node2D" parent="." unique_id=586138963]
@@ -21,6 +25,33 @@ process_mode = 1
 unique_name_in_owner = true
 
 [node name="MainLevel" parent="World/LevelRoot" unique_id=383300953 instance=ExtResource("3_6n4xl")]
+
+[node name="TowerRoot" type="Node2D" parent="World" unique_id=972093059]
+unique_name_in_owner = true
+
+[node name="TestTower" parent="World/TowerRoot" unique_id=1231075861 instance=ExtResource("4_n4iq1")]
+position = Vector2(191, 74)
+damage = 25.0
+
+[node name="TestTower2" parent="World/TowerRoot" unique_id=10156436 instance=ExtResource("4_n4iq1")]
+position = Vector2(-155, -74)
+damage = 25.0
+
+[node name="TestTower3" parent="World/TowerRoot" unique_id=1870674583 instance=ExtResource("4_n4iq1")]
+position = Vector2(-30, 82)
+damage = 25.0
+
+[node name="TestTower4" parent="World/TowerRoot" unique_id=2092970021 instance=ExtResource("4_n4iq1")]
+position = Vector2(60, 87)
+damage = 25.0
+
+[node name="TestTower5" parent="World/TowerRoot" unique_id=680281246 instance=ExtResource("4_n4iq1")]
+position = Vector2(-179, -1)
+damage = 25.0
+
+[node name="TestTower6" parent="World/TowerRoot" unique_id=297032383 instance=ExtResource("4_n4iq1")]
+position = Vector2(-158, 90)
+damage = 25.0
 
 [node name="EntityRoot" type="Node2D" parent="World" unique_id=245136058]
 unique_name_in_owner = true
@@ -94,3 +125,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("4_tk58t")
+
+[node name="DebugOverlay" parent="DebugLayer/DebugRoot" unique_id=1521454231 instance=ExtResource("4_ibp4d")]
+layout_mode = 1

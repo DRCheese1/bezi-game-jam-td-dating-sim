@@ -36,6 +36,5 @@ offset_top = -89.0
 offset_right = 64.0
 offset_bottom = -75.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_s7kha")
-min_value = 100.0
 value = 100.0
 show_percentage = false

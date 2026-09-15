@@ -1,5 +1,6 @@
 extends Node
 
+var tower_root: Node2D
 var entity_root: Node2D
 
 var systems: Dictionary
@@ -8,7 +9,7 @@ func _process(delta: float) -> void:
 	if entity_root == null:
 		print("Ts null")
 
-func access_system(system_name: String, sub_system: String) -> System:
+func access_system(system_name: String, sub_system: String = "") -> System:
 	if not systems.has(system_name):
 		push_error("Unknown system: " + system_name)
 		return null

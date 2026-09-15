@@ -1,25 +1,22 @@
 [gd_scene format=3 uid="uid://mjw7nnkh7bhy"]
 
-[ext_resource type="Script" uid="uid://b3ot5ernuhm2y" path="res://src/levels/prototypes/path_2d_spawner.gd" id="1_m2uio"]
-[ext_resource type="PackedScene" uid="uid://df4mpnejinede" path="res://src/gameplay/towers/test_tower/test_tower.tscn" id="2_t2i1b"]
+[ext_resource type="Texture2D" uid="uid://b47rfcvyi5axe" path="res://assets/art/world/backgrounds/background-temp.png" id="1_t2i1b"]
+[ext_resource type="Script" uid="uid://b3ot5ernuhm2y" path="res://src/levels/prototypes/path_2d_spawner.gd" id="2_valra"]
 
-[sub_resource type="Curve2D" id="Curve2D_mxip6"]
+[sub_resource type="Curve2D" id="Curve2D_66tjv"]
 _data = {
-"points": PackedVector2Array(2.2702703, 56.756752, -2.2702703, -56.756752, 164, 278, 0, 0, 0, 0, 246, 215, 0, 0, 0, 0, 329.43246, 215.85135, -3.972973, 30.648647, 3.972973, -30.648647, 406.90543, 186.05405, 0, 0, 0, 0, 330.2838, 150.2973, 0, 0, 0, 0, 234.93245, 147.74324, 1.6074464, 32.684746, -1.6074464, -32.684746, 163.41893, 117.09459)
+"points": PackedVector2Array(-19.74984, 19.74984, 19.74984, -19.74984, -273, 181, -16.326534, 7.636605, 16.326534, -7.636605, -233, 148, -11.586573, 1.0533248, 11.586573, -1.0533248, -164, 136, -16.326534, 0.2633312, 16.326534, -0.2633312, -58, 126, -10.178342, -0.84819514, 10.178342, 0.84819514, 18, 128, -14.843415, -1.2722927, 14.843415, 1.2722927, 97, 137, -26.718147, 2.120488, 26.718147, -2.120488, 182, 143, 0, 27.142244, 0, -27.142244, 236, 91, 16.539804, 11.874732, -16.539804, -11.874732, 209, 26, 22.901268, 2.120488, -22.901268, -2.120488, 150, 6, 25.021757, -2.5445855, -25.021757, 2.5445855, 90, 5, 27.566341, -5.089171, -27.566341, 5.089171, -2, 20, 22.47717, -2.120488, -22.47717, 2.120488, -100, 41, 26.859783, 2.8966432, -26.859783, -2.8966432, -180, 41, 3.1599746, 15.27321, -3.1599746, -15.27321, -226, 9, -7.531272, 19.407509, 7.531272, -19.407509, -226, -51, -9.796653, 6.0645947, 9.796653, -6.0645947, -189, -100, -20.059813, -1.8660291, 20.059813, 1.8660291, -122, -117, -16.794262, -2.3325365, 16.794262, 2.3325365, -61, -103, -13.063861, 0, 13.063861, 0, 10, -96, -11.789338, 0, 11.789338, 0, 80, -97, -27.06131, 0.95589226, 27.06131, -0.95589226, 135, -96, -24.592083, 16.757437, 24.592083, -16.757437, 187, -118, -1.5421728, 21.975962, 1.5421728, -21.975962, 227, -170)
 }
-point_count = 7
+point_count = 24
 
 [node name="MainLevel" type="Node2D" unique_id=383300953]
 
-[node name="Path2D" type="Path2D" parent="." unique_id=927285649]
-position = Vector2(-38.250454, -51.445618)
-scale = Vector2(1.1310993, 1.1310995)
-curve = SubResource("Curve2D_mxip6")
-script = ExtResource("1_m2uio")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=25320381]
+z_index = -10
+texture = ExtResource("1_t2i1b")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1142160473]
-position = Vector2(315, 184)
 
-[node name="TestTower" parent="." unique_id=1231075861 instance=ExtResource("2_t2i1b")]
-position = Vector2(368, 156)
-damage = 25.0
+[node name="Path2D" type="Path2D" parent="." unique_id=1999818859]
+curve = SubResource("Curve2D_66tjv")
+script = ExtResource("2_valra")
