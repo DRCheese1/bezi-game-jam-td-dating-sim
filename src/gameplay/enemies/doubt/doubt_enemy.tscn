@@ -1,40 +1,47 @@
 [gd_scene format=3 uid="uid://cjc4qsiu5lnpy"]
 
-[ext_resource type="Script" uid="uid://m0qfvrgf8he" path="res://src/gameplay/enemies/doubt/doubt_enemy.gd" id="1_2o6y3"]
-[ext_resource type="Texture2D" uid="uid://bvdv7g42livr6" path="res://icon.svg" id="2_42wgi"]
+[ext_resource type="PackedScene" uid="uid://djgx2esfwlun4" path="res://src/gameplay/enemies/base_enemy.tscn" id="1_2o6y3"]
+[ext_resource type="Texture2D" uid="uid://cstfytejd24yi" path="res://assets/art/characters/enemies/blob-doubt-animated.png" id="2_42wgi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_phkuc"]
-size = Vector2(127, 124)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ta6o"]
+atlas = ExtResource("2_42wgi")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7kha"]
-bg_color = Color(1, 0.1878809, 0.13868281, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.5237787, 0.5420105, 0.53744, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0h8b"]
+atlas = ExtResource("2_42wgi")
+region = Rect2(32, 0, 32, 32)
 
-[node name="DoubtEnemy" type="Area2D" unique_id=1942149697 groups=["enemies"]]
-scale = Vector2(0.25, 0.25)
-collision_mask = 0
-script = ExtResource("1_2o6y3")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tilj2"]
+atlas = ExtResource("2_42wgi")
+region = Rect2(64, 0, 32, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=498857640]
-shape = SubResource("RectangleShape2D_phkuc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7glf"]
+atlas = ExtResource("2_42wgi")
+region = Rect2(96, 0, 32, 32)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=37349970]
-texture = ExtResource("2_42wgi")
+[sub_resource type="SpriteFrames" id="SpriteFrames_wr6ee"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ta6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0h8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tilj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7glf")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1024666026]
-offset_left = -64.0
-offset_top = -89.0
-offset_right = 64.0
-offset_bottom = -75.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_s7kha")
-value = 100.0
-show_percentage = false
+[node name="DoubtEnemy" unique_id=598291632 instance=ExtResource("1_2o6y3")]
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=208660997]
+sprite_frames = SubResource("SpriteFrames_wr6ee")
+autoplay = "default"
+frame_progress = 0.27483797

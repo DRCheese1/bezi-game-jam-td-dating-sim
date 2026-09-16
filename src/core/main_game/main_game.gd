@@ -3,6 +3,7 @@ class_name MainGame
 
 
 var _current_level = null
+var spawn_system: System
 
 # Game World root nodes
 @onready var level_root: Node2D = %LevelRoot
@@ -26,6 +27,7 @@ func _ready() -> void:
 	GameManager.tower_root = tower_root
 	GameManager.entity_root = entity_root
 	GameManager.access_system("Relationship").relationship_failed.connect(_on_relationship_failed)
+	spawn_system = GameManager.access_system("WaveSpawner")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -37,6 +39,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed(&"debug_quit"):
 		quit_game()
+	
+	if event.is_action_pressed("testspawn"):
+		spawn_system.test_wave()
 
 
 func _on_relationship_failed():

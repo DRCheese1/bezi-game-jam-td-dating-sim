@@ -1,4 +1,5 @@
 extends Area2D
+class_name BaseEnemy
 
 @export var distance: float = 0
 @export var speed: float = 50
@@ -11,9 +12,10 @@ var flash_tween: Tween
 var relationship_system: System
 
 @onready var progress_bar: ProgressBar = $ProgressBar
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
+	visible = false
 	relationship_system = GameManager.access_system("Relationship")
 	
 	progress_bar.max_value = health
@@ -21,6 +23,10 @@ func _ready() -> void:
 	
 	if path_2d:
 		path_length = path_2d.curve.get_baked_length()
+	
+	await get_tree().process_frame
+	
+	visible = true
 
 
 func _process(delta: float) -> void:

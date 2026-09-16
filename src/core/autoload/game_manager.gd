@@ -5,7 +5,7 @@ var entity_root: Node2D
 
 var systems: Dictionary
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if entity_root == null:
 		print("Ts null")
 

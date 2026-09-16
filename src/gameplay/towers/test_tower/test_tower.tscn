@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://df4mpnejinede"]
 
 [ext_resource type="Script" uid="uid://c48xfvlcs7ax" path="res://src/gameplay/towers/test_tower/test_tower.gd" id="1_8b86e"]
-[ext_resource type="Texture2D" uid="uid://bvdv7g42livr6" path="res://icon.svg" id="2_fp66t"]
+[ext_resource type="Texture2D" uid="uid://drw1at6jooglm" path="res://assets/art/characters/towers/tower_flirting.png" id="2_8b86e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nw32f"]
 radius = 53.009434
@@ -13,8 +13,7 @@ script = ExtResource("1_8b86e")
 shape = SubResource("CircleShape2D_nw32f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1497432238]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_fp66t")
+texture = ExtResource("2_8b86e")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=338494349]
 wait_time = 2.0
