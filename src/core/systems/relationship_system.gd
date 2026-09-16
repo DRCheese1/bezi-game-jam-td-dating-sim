@@ -12,6 +12,9 @@ var currencies: Dictionary = {
 	"vulnerability": 0.0,
 }
 
+func _init() -> void:
+	add_currency("charm", 500)
+
 var relationship_health: float = 50.0  # 0-100, drives difficulty/enemy waves
 var current_day: int = 1
 var current_character: String = ""

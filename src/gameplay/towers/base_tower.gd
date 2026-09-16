@@ -2,7 +2,6 @@ extends Area2D
 
 @export var damage: float = 10.0
 @export var fire_rate: float = 1.0
-@export var currency_type: String = "Charm"
 
 var targets: Array[Area2D] = []
 

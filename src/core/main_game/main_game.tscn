@@ -5,11 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://mjw7nnkh7bhy" path="res://src/levels/prototypes/main_level.tscn" id="3_6n4xl"]
 [ext_resource type="Script" uid="uid://bthmwwpciutxs" path="res://src/core/systems/wave_spawner.gd" id="3_l0hoa"]
 [ext_resource type="PackedScene" uid="uid://bkra48siwq6jd" path="res://src/debug/debug_overlay/debug_overlay.tscn" id="4_ibp4d"]
-[ext_resource type="PackedScene" uid="uid://df4mpnejinede" path="res://src/gameplay/towers/test_tower/test_tower.tscn" id="4_n4iq1"]
 [ext_resource type="Script" uid="uid://csuy1qel7uxb5" path="res://src/resources/enemy_definitions/enemy_data.gd" id="4_tc86p"]
 [ext_resource type="Script" uid="uid://bmfls3dcd2v1w" path="res://src/debug/debug_root.gd" id="4_tk58t"]
 [ext_resource type="Resource" uid="uid://by2nr23kac04t" path="res://src/resources/enemy_definitions/doubt_enemy.tres" id="5_86u7o"]
 [ext_resource type="Script" uid="uid://bkwreuunrrk2w" path="res://src/core/systems/building.gd" id="6_86u7o"]
+[ext_resource type="Script" uid="uid://b0p8ebmgd2aex" path="res://src/resources/tower_definitons/tower_data.gd" id="7_1aoel"]
+[ext_resource type="PackedScene" uid="uid://bqekjwyhtrd4p" path="res://src/ui/hud/main_hud.tscn" id="8_86u7o"]
+[ext_resource type="Resource" uid="uid://bdfm8434sc5ta" path="res://src/resources/tower_definitons/flirt_tower.tres" id="8_llqnb"]
 
 [node name="MainGame" type="Node" unique_id=1086910331]
 process_mode = 3
@@ -31,6 +33,7 @@ metadata/_custom_type_script = "uid://brvewxiiwrnkv"
 
 [node name="Building" type="Node" parent="Systems" unique_id=102791830]
 script = ExtResource("6_86u7o")
+towers = Array[ExtResource("7_1aoel")]([ExtResource("8_llqnb")])
 system_name = "Building"
 metadata/_custom_type_script = "uid://brvewxiiwrnkv"
 
@@ -44,30 +47,6 @@ unique_name_in_owner = true
 
 [node name="TowerRoot" type="Node2D" parent="World" unique_id=972093059]
 unique_name_in_owner = true
-
-[node name="TestTower" parent="World/TowerRoot" unique_id=1231075861 instance=ExtResource("4_n4iq1")]
-position = Vector2(191, 74)
-damage = 25.0
-
-[node name="TestTower2" parent="World/TowerRoot" unique_id=10156436 instance=ExtResource("4_n4iq1")]
-position = Vector2(-155, -74)
-damage = 25.0
-
-[node name="TestTower3" parent="World/TowerRoot" unique_id=1870674583 instance=ExtResource("4_n4iq1")]
-position = Vector2(-30, 82)
-damage = 25.0
-
-[node name="TestTower4" parent="World/TowerRoot" unique_id=2092970021 instance=ExtResource("4_n4iq1")]
-position = Vector2(60, 87)
-damage = 25.0
-
-[node name="TestTower5" parent="World/TowerRoot" unique_id=680281246 instance=ExtResource("4_n4iq1")]
-position = Vector2(-179, -1)
-damage = 25.0
-
-[node name="TestTower6" parent="World/TowerRoot" unique_id=297032383 instance=ExtResource("4_n4iq1")]
-position = Vector2(-158, 90)
-damage = 25.0
 
 [node name="EntityRoot" type="Node2D" parent="World" unique_id=245136058]
 unique_name_in_owner = true
@@ -88,6 +67,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="MainHud" parent="HudLayer/HudRoot" unique_id=632811884 instance=ExtResource("8_86u7o")]
+layout_mode = 1
 
 [node name="MenuLayer" type="CanvasLayer" parent="." unique_id=765242574]
 process_mode = 3

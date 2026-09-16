@@ -1,19 +1,17 @@
-[gd_scene format=3 uid="uid://df4mpnejinede"]
+[gd_scene format=3 uid="uid://hvc2fk1ghe3a"]
 
-[ext_resource type="Script" uid="uid://c48xfvlcs7ax" path="res://src/gameplay/towers/test_tower/test_tower.gd" id="1_8b86e"]
-[ext_resource type="Texture2D" uid="uid://drw1at6jooglm" path="res://assets/art/characters/towers/tower_flirting.png" id="2_8b86e"]
+[ext_resource type="Script" uid="uid://ddwf8fucrtace" path="res://src/gameplay/towers/base_tower.gd" id="1_oemwn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nw32f"]
 radius = 53.009434
 
-[node name="TestTower" type="Area2D" unique_id=1231075861]
-script = ExtResource("1_8b86e")
+[node name="BaseTower" type="Area2D" unique_id=1231075861]
+script = ExtResource("1_oemwn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=377728848]
 shape = SubResource("CircleShape2D_nw32f")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1497432238]
-texture = ExtResource("2_8b86e")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1103034566]
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=338494349]
 wait_time = 2.0
