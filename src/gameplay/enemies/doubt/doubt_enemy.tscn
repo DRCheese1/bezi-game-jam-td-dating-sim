@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cjc4qsiu5lnpy"]
+
+[ext_resource type="PackedScene" uid="uid://djgx2esfwlun4" path="res://src/gameplay/enemies/base_enemy.tscn" id="1_2o6y3"]
+[ext_resource type="Texture2D" uid="uid://cstfytejd24yi" path="res://assets/art/characters/enemies/blob-doubt-animated.png" id="2_42wgi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ta6o"]
+atlas = ExtResource("2_42wgi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0h8b"]
+atlas = ExtResource("2_42wgi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tilj2"]
+atlas = ExtResource("2_42wgi")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7glf"]
+atlas = ExtResource("2_42wgi")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wr6ee"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ta6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0h8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tilj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7glf")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DoubtEnemy" unique_id=598291632 instance=ExtResource("1_2o6y3")]
+health = 147.615
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=208660997]
+sprite_frames = SubResource("SpriteFrames_wr6ee")
+autoplay = "default"
+frame_progress = 0.27483797

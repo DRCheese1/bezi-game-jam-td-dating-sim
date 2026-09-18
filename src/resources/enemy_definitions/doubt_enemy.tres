@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://by2nr23kac04t"]
+
+[ext_resource type="PackedScene" uid="uid://cjc4qsiu5lnpy" path="res://src/gameplay/enemies/doubt/doubt_enemy.tscn" id="1_5kpty"]
+[ext_resource type="Script" uid="uid://csuy1qel7uxb5" path="res://src/resources/enemy_definitions/enemy_data.gd" id="1_cpa1j"]
+
+[resource]
+script = ExtResource("1_cpa1j")
+scene = ExtResource("1_5kpty")
+health = 150
+min_group_size = 1
+metadata/_custom_type_script = "uid://csuy1qel7uxb5"

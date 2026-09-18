@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://hvc2fk1ghe3a"]
+
+[ext_resource type="Script" uid="uid://ddwf8fucrtace" path="res://src/gameplay/towers/base_tower.gd" id="1_oemwn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nw32f"]
+radius = 53.009434
+
+[node name="BaseTower" type="Area2D" unique_id=1231075861]
+z_index = 5
+script = ExtResource("1_oemwn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=377728848]
+shape = SubResource("CircleShape2D_nw32f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1103034566]
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=338494349]
+wait_time = 2.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

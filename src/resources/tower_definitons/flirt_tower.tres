@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TowerData" format=3 uid="uid://bdfm8434sc5ta"]
+
+[ext_resource type="Script" uid="uid://b0p8ebmgd2aex" path="res://src/resources/tower_definitons/tower_data.gd" id="1_dq1ch"]
+[ext_resource type="PackedScene" uid="uid://bsicod7wijo7g" path="res://src/gameplay/towers/flirt_tower/flirt_tower.tscn" id="1_lm70u"]
+[ext_resource type="Texture2D" uid="uid://drw1at6jooglm" path="res://assets/art/characters/towers/tower_flirting.png" id="1_t76a4"]
+
+[resource]
+script = ExtResource("1_dq1ch")
+scene = ExtResource("1_lm70u")
+icon = ExtResource("1_t76a4")
+damage = 50
+fire_rate = 3
+metadata/_custom_type_script = "uid://b0p8ebmgd2aex"

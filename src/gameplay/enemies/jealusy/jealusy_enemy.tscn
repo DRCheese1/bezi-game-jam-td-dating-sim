@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dyx34eqfjxem3"]
+
+[ext_resource type="PackedScene" uid="uid://djgx2esfwlun4" path="res://src/gameplay/enemies/base_enemy.tscn" id="1_u0gkl"]
+[ext_resource type="Texture2D" uid="uid://dv857op70deq8" path="res://assets/art/characters/enemies/blob-jealusy-sheet.png" id="2_a3k1k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwnra"]
+atlas = ExtResource("2_a3k1k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nx3t"]
+atlas = ExtResource("2_a3k1k")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2old"]
+atlas = ExtResource("2_a3k1k")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl5i7"]
+atlas = ExtResource("2_a3k1k")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1aoel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwnra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nx3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2old")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl5i7")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BaseEnemy" unique_id=598291632 instance=ExtResource("1_u0gkl")]
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=208660997]
+sprite_frames = SubResource("SpriteFrames_1aoel")
+autoplay = "default"

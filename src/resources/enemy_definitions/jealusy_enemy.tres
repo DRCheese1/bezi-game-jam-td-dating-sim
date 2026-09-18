@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://kh2rvgp234fw"]
+
+[ext_resource type="Script" uid="uid://csuy1qel7uxb5" path="res://src/resources/enemy_definitions/enemy_data.gd" id="1_807u2"]
+[ext_resource type="PackedScene" uid="uid://dyx34eqfjxem3" path="res://src/gameplay/enemies/jealusy/jealusy_enemy.tscn" id="1_smix7"]
+
+[resource]
+script = ExtResource("1_807u2")
+scene = ExtResource("1_smix7")
+speed = 100
+health = 75
+damage = 25
+base_weight = 0.5
+min_wave = 4
+min_group_size = 1
+max_group_size = 3
+metadata/_custom_type_script = "uid://csuy1qel7uxb5"

@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://bo46jcmgholll"]
 
 [ext_resource type="Script" uid="uid://jvpc1nn4kdwj" path="res://src/core/main_game/main_game.gd" id="1_3fed5"]
+[ext_resource type="Script" uid="uid://c56lykmc0txot" path="res://src/core/systems/relationship_system.gd" id="2_6yl8a"]
+[ext_resource type="PackedScene" uid="uid://mjw7nnkh7bhy" path="res://src/levels/prototypes/main_level.tscn" id="3_6n4xl"]
+[ext_resource type="Script" uid="uid://bthmwwpciutxs" path="res://src/core/systems/wave_spawner.gd" id="3_l0hoa"]
+[ext_resource type="PackedScene" uid="uid://bkra48siwq6jd" path="res://src/debug/debug_overlay/debug_overlay.tscn" id="4_ibp4d"]
+[ext_resource type="Script" uid="uid://csuy1qel7uxb5" path="res://src/resources/enemy_definitions/enemy_data.gd" id="4_tc86p"]
+[ext_resource type="Script" uid="uid://bmfls3dcd2v1w" path="res://src/debug/debug_root.gd" id="4_tk58t"]
+[ext_resource type="Resource" uid="uid://by2nr23kac04t" path="res://src/resources/enemy_definitions/doubt_enemy.tres" id="5_86u7o"]
+[ext_resource type="Script" uid="uid://bkwreuunrrk2w" path="res://src/core/systems/building.gd" id="6_86u7o"]
+[ext_resource type="Resource" uid="uid://kh2rvgp234fw" path="res://src/resources/enemy_definitions/jealusy_enemy.tres" id="6_llqnb"]
+[ext_resource type="Script" uid="uid://b0p8ebmgd2aex" path="res://src/resources/tower_definitons/tower_data.gd" id="7_1aoel"]
+[ext_resource type="PackedScene" uid="uid://bqekjwyhtrd4p" path="res://src/ui/hud/main_hud.tscn" id="8_86u7o"]
+[ext_resource type="Resource" uid="uid://bdfm8434sc5ta" path="res://src/resources/tower_definitons/flirt_tower.tres" id="8_llqnb"]
 
 [node name="MainGame" type="Node" unique_id=1086910331]
 process_mode = 3
@@ -8,20 +20,53 @@ script = ExtResource("1_3fed5")
 
 [node name="Systems" type="Node" parent="." unique_id=79150978]
 
+[node name="Relationship" type="Node" parent="Systems" unique_id=852301708]
+script = ExtResource("2_6yl8a")
+system_name = "Relationship"
+metadata/_custom_type_script = "uid://brvewxiiwrnkv"
+
+[node name="WaveSpawner" type="Node" parent="Systems" unique_id=825367544 node_paths=PackedStringArray("entity_root")]
+script = ExtResource("3_l0hoa")
+entity_root = NodePath("../../World/EntityRoot")
+enemy_pool = Array[ExtResource("4_tc86p")]([ExtResource("5_86u7o"), ExtResource("6_llqnb")])
+system_name = "WaveSpawner"
+metadata/_custom_type_script = "uid://brvewxiiwrnkv"
+
+[node name="Building" type="Node" parent="Systems" unique_id=102791830 node_paths=PackedStringArray("tower_root")]
+script = ExtResource("6_86u7o")
+towers = Array[ExtResource("7_1aoel")]([ExtResource("8_llqnb")])
+tower_root = NodePath("../../World/TowerRoot")
+system_name = "Building"
+metadata/_custom_type_script = "uid://brvewxiiwrnkv"
+
+[node name="Sprite2D" type="Sprite2D" parent="Systems/Building" unique_id=1014913009]
+visible = false
+modulate = Color(0.68235296, 1, 1, 0.6862745)
+z_index = 10
+
 [node name="World" type="Node2D" parent="." unique_id=586138963]
 process_mode = 1
 
 [node name="LevelRoot" type="Node2D" parent="World" unique_id=574119747]
+unique_name_in_owner = true
+
+[node name="MainLevel" parent="World/LevelRoot" unique_id=383300953 instance=ExtResource("3_6n4xl")]
+
+[node name="TowerRoot" type="Node2D" parent="World" unique_id=972093059]
+unique_name_in_owner = true
 
 [node name="EntityRoot" type="Node2D" parent="World" unique_id=245136058]
+unique_name_in_owner = true
 
 [node name="EffectRoot" type="Node2D" parent="World" unique_id=1411378599]
+unique_name_in_owner = true
 
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=406622255]
 process_mode = 1
-layer = 16
+layer = 10
 
 [node name="HudRoot" type="Control" parent="HudLayer" unique_id=2089517213]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,11 +75,26 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="MainHud" parent="HudLayer/HudRoot" unique_id=632811884 instance=ExtResource("8_86u7o")]
+layout_mode = 1
+
+[node name="MenuLayer" type="CanvasLayer" parent="." unique_id=765242574]
+process_mode = 3
+layer = 20
+
+[node name="MenuRoot" type="Control" parent="MenuLayer" unique_id=834845194]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=230013509]
 process_mode = 2
-layer = 32
+layer = 50
 
 [node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=1968684467]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,9 +105,10 @@ mouse_filter = 2
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1292398966]
 process_mode = 3
-layer = 64
+layer = 100
 
 [node name="TransitionRoot" type="Control" parent="TransitionLayer" unique_id=1215037353]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,6 +122,7 @@ process_mode = 3
 layer = 128
 
 [node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=365864875]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,3 +130,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("4_tk58t")
+
+[node name="DebugOverlay" parent="DebugLayer/DebugRoot" unique_id=1521454231 instance=ExtResource("4_ibp4d")]
+layout_mode = 1
