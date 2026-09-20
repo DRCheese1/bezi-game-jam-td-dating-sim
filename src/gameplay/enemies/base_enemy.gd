@@ -47,7 +47,7 @@ func _reached_end() -> void:
 	queue_free()
 
 
-func take_damage(amount: float):
+func take_damage(amount: int):
 	health -= amount
 	progress_bar.value = health
 	_flash_hit()

@@ -50,7 +50,7 @@ func _spawn_wave(current_wave: int):
 			var enemy = enemy_data.scene.instantiate()
 			enemy.enemy_data = enemy_data
 			enemy.path_2d = path_2d
-			entity_root.add_child(enemy)
+			entity_root.add_child.call_deferred(enemy)
 			enemy_count += 1
 			await get_tree().create_timer(0.4).timeout
 		

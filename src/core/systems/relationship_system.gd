@@ -33,9 +33,11 @@ func can_afford(currency_type: String, cost: float) -> bool:
 
 func spend_currency(currency_type: String, cost: float) -> bool:
 	if not can_afford(currency_type, cost):
+		print("No afford")
 		return false
 	currencies[currency_type] -= cost
 	currency_changed.emit(currency_type, currencies[currency_type])
+	print("Yes afford")
 	return true
 
 func apply_vulnerability_risk(amount: float, success_chance: float) -> void:

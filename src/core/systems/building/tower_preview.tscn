@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://y1uj6rdpfp34"]
+
+[ext_resource type="Script" uid="uid://vmdsm8tjwu02" path="res://src/core/systems/building/building_marker.gd" id="1_0ddyv"]
+[ext_resource type="Shader" uid="uid://cgwk1gmljee1s" path="res://src/shaders/tower_preview.gdshader" id="2_47xt0"]
+[ext_resource type="Texture2D" uid="uid://drw1at6jooglm" path="res://assets/art/characters/towers/tower_flirting.png" id="3_yv7jg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cliy1"]
+shader = ExtResource("2_47xt0")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1glun"]
+
+[node name="TowerPreview" type="Node2D" unique_id=417610892]
+visible = false
+script = ExtResource("1_0ddyv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=958582004]
+modulate = Color(0.68235296, 1, 1, 0.6862745)
+z_index = 10
+material = SubResource("ShaderMaterial_cliy1")
+texture = ExtResource("3_yv7jg")
+region_rect = Rect2(-4, -4, 40, 37)
+
+[node name="BuildingArea" type="Area2D" parent="." unique_id=2087782291]
+position = Vector2(0, 12)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingArea" unique_id=307463659]
+shape = SubResource("CircleShape2D_1glun")
+debug_color = Color(1, 0, 0, 0.4117647)
+
+[connection signal="area_entered" from="BuildingArea" to="." method="_on_building_area_area_entered"]
+[connection signal="area_exited" from="BuildingArea" to="." method="_on_building_area_area_exited"]

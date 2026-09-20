@@ -2,7 +2,7 @@ extends Node
 class_name MainGame
 
 
-var _current_level = null
+#var _current_level = null
 var spawn_system: System
 
 # Game World root nodes
@@ -24,12 +24,17 @@ func quit_game() -> void:
 
 
 func _ready() -> void:
+	if not hud_root:
+		print("no huds")
+	else:
+		print("Huds is: ", hud_root)
+	
 	GameManager.tower_root = tower_root
 	GameManager.entity_root = entity_root
 	GameManager.access_system("Relationship").relationship_failed.connect(_on_relationship_failed)
 	spawn_system = GameManager.access_system("WaveSpawner")
-	GameManager.start_dialauge("main-timeline")
 	GameManager.hud_root = hud_root
+	GameManager.start_dialauge("main-timeline")
 
 
 func _unhandled_input(event: InputEvent) -> void:
