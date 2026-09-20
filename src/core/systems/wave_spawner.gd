@@ -6,33 +6,43 @@ signal next_wave()
 @export var enemy_pool: Array[EnemyData] = []
 @export var base_budget: int = 20
 @export var wave_growth_rate: float = 1.25  # tune this - 25% harder each day, compounding	
+@export var day_multiplier: float = 1.25
 
 var path_2d: Path2D
 var weight_modifiers: Dictionary = {}
-var wave_count: int = 0
+var _wave_count: int = 0
 var day_count: int = 1
 var enemy_count: int = 0:
 	set(value):
 		enemy_count = value
-		print("Enemies: ", value)
 		
 		if enemy_count == 0:
 			next_wave.emit()
 
-func test_wave():
-	wave_count += 1
+func _ready() -> void:
+	GameManager.register_system(system_name, self)
 	
-	_spawn_wave(wave_count)
+	for enemy in enemy_pool:
+		enemy.capture_base_stats()
+
+func test_wave():
+	_wave_count += 1
+	
+	_spawn_wave(_wave_count)
 
 func next_wave_sequence():
 	await get_tree().create_timer(5.0).timeout
 	
 	for i in range(3):
-		wave_count += 1
-		_spawn_wave(wave_count)
+		_wave_count += 1
+		_spawn_wave(_wave_count)
 		await next_wave
 	
 	day_count += 1
+	if day_count >= 2:
+		for enemy in enemy_pool:
+			_scale_enemy_data(enemy, day_multiplier)
+	
 	GameManager.start_dialauge("day%s-timeline" % day_count)
 
 func _spawn_wave(current_wave: int):
@@ -40,7 +50,7 @@ func _spawn_wave(current_wave: int):
 		push_error("Path_2d is null")
 		return
 	
-	var budget = base_budget * pow(wave_growth_rate, wave_count)
+	var budget = base_budget * pow(wave_growth_rate, _wave_count)
 	print("Budget: ", budget)
 	
 	var wave: Array[Array] = _generate_wave(budget, current_wave)
@@ -116,3 +126,9 @@ func _sort_groups_by_difficulty(wave: Array[Array]) -> Array[Array]:
 		
 		return a_cost < b_cost)
 	return wave
+
+func _scale_enemy_data(enemy: EnemyData, multiplier: float) -> void:
+	enemy.min_group_size = int(enemy.min_group_size * multiplier)
+	enemy.max_group_size = int(enemy.max_group_size * multiplier)
+	enemy.currency_amount = int(enemy.currency_amount * multiplier)
+	enemy.health = int(enemy.health * multiplier)

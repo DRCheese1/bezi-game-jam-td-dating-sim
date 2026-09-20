@@ -1,6 +1,23 @@
 [gd_scene format=3 uid="uid://bqekjwyhtrd4p"]
 
-[ext_resource type="Script" uid="uid://ckt4comjdre18" path="res://src/ui/hud/tower_container.gd" id="1_onq3a"]
+[ext_resource type="Script" uid="uid://ckt4comjdre18" path="res://src/ui/hud/main_hud.gd" id="1_onq3a"]
+[ext_resource type="FontFile" uid="uid://pa1rlsqofepk" path="res://assets/art/ui/fonts/ThaleahFat.ttf" id="2_grp1k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_015xq"]
+font = ExtResource("2_grp1k")
+font_color = Color(1, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r26bk"]
+font = ExtResource("2_grp1k")
+font_color = Color(0, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1g6lx"]
+font = ExtResource("2_grp1k")
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eiinj"]
+font = ExtResource("2_grp1k")
+font_color = Color(1, 0, 0, 1)
 
 [node name="MainHud" type="Control" unique_id=632811884]
 layout_mode = 3
@@ -10,6 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_onq3a")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1393083224]
 layout_mode = 1
@@ -24,10 +42,67 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-script = ExtResource("1_onq3a")
 
-[node name="Control" type="Control" parent="HBoxContainer" unique_id=556949751]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=670328907]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="CurrenciesContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=1940596689]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CharmContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/CurrenciesContainer" unique_id=1602037535]
+layout_mode = 2
+
+[node name="CharmTexture" type="TextureRect" parent="HBoxContainer/VBoxContainer/CurrenciesContainer/CharmContainer" unique_id=1889622962]
+layout_mode = 2
+
+[node name="CharmAmount" type="Label" parent="HBoxContainer/VBoxContainer/CurrenciesContainer/CharmContainer" unique_id=1434634918]
+layout_mode = 2
+text = "Charm: 0"
+label_settings = SubResource("LabelSettings_015xq")
+
+[node name="TrustContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/CurrenciesContainer" unique_id=1967803568]
+layout_mode = 2
+
+[node name="TrustTexture" type="TextureRect" parent="HBoxContainer/VBoxContainer/CurrenciesContainer/TrustContainer" unique_id=193596120]
+layout_mode = 2
+
+[node name="TrustAmount" type="Label" parent="HBoxContainer/VBoxContainer/CurrenciesContainer/TrustContainer" unique_id=568994180]
+layout_mode = 2
+text = "Trust: 0"
+label_settings = SubResource("LabelSettings_r26bk")
+
+[node name="WitContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/CurrenciesContainer" unique_id=2098347916]
+layout_mode = 2
+
+[node name="WitTexture" type="TextureRect" parent="HBoxContainer/VBoxContainer/CurrenciesContainer/WitContainer" unique_id=154075172]
+layout_mode = 2
+
+[node name="WitAmount" type="Label" parent="HBoxContainer/VBoxContainer/CurrenciesContainer/WitContainer" unique_id=1174098966]
+layout_mode = 2
+text = "Wit: 0"
+label_settings = SubResource("LabelSettings_1g6lx")
+
+[node name="VulnContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/CurrenciesContainer" unique_id=1100971411]
+layout_mode = 2
+
+[node name="VulnTexture" type="TextureRect" parent="HBoxContainer/VBoxContainer/CurrenciesContainer/VulnContainer" unique_id=1939233232]
+layout_mode = 2
+
+[node name="VulnAmount" type="Label" parent="HBoxContainer/VBoxContainer/CurrenciesContainer/VulnContainer" unique_id=716317811]
+layout_mode = 2
+text = "Vulnerability: 0"
+label_settings = SubResource("LabelSettings_eiinj")
+
+[node name="Spacer" type="Control" parent="HBoxContainer/VBoxContainer" unique_id=880881927]
+layout_mode = 2
+size_flags_vertical = 3
 size_flags_stretch_ratio = 15.0
+mouse_filter = 2
+
+[node name="Spacer" type="Control" parent="HBoxContainer" unique_id=556949751]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.0
 mouse_filter = 2

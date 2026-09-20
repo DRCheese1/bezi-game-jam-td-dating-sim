@@ -13,4 +13,7 @@ base_weight = 0.5
 min_wave = 4
 min_group_size = 1
 max_group_size = 3
+currency_type = Array[String](["charm", "trust", "wit"])
+currency_weights = Array[float]([1.0, 1.0, 0.5])
+currency_amount = 10
 metadata/_custom_type_script = "uid://csuy1qel7uxb5"
