@@ -27,6 +27,7 @@ shape = SubResource("RectangleShape2D_hp7m3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=208660997]
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1083017054]
+z_index = 15
 offset_left = -15.0
 offset_top = -20.0
 offset_right = 15.0

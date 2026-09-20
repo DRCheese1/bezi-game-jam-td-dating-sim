@@ -12,8 +12,10 @@ var currencies: Dictionary = {
 	"vulnerability": 0.0,
 }
 
-func _init() -> void:
-	add_currency("charm", 500)
+func _ready() -> void:
+	GameManager.register_system(system_name, self)
+	
+	Dialogic.signal_event.connect(dialogic_add_currency)
 
 var relationship_health: float = 50.0  # 0-100, drives difficulty/enemy waves
 var current_day: int = 1
@@ -63,3 +65,9 @@ func reset_for_character(character_name: String) -> void:
 	relationship_health = 50.0
 	for key in currencies:
 		currencies[key] = 0.0
+
+func dialogic_add_currency(dict: Dictionary) -> void:
+	if not dict.is_empty():
+		for key in dict:
+			var amount: int = dict[key]
+			add_currency(key, amount)

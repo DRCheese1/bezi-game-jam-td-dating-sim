@@ -28,6 +28,8 @@ func _ready() -> void:
 	GameManager.entity_root = entity_root
 	GameManager.access_system("Relationship").relationship_failed.connect(_on_relationship_failed)
 	spawn_system = GameManager.access_system("WaveSpawner")
+	GameManager.start_dialauge("main-timeline")
+	GameManager.hud_root = hud_root
 
 
 func _unhandled_input(event: InputEvent) -> void:

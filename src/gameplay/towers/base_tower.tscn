@@ -5,16 +5,29 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_nw32f"]
 radius = 53.009434
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7kha"]
+
 [node name="BaseTower" type="Area2D" unique_id=1231075861]
+z_index = 5
 script = ExtResource("1_oemwn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=377728848]
 shape = SubResource("CircleShape2D_nw32f")
+debug_color = Color(6.256998e-07, 0.7624254, 3.85046e-07, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1103034566]
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=338494349]
 wait_time = 2.0
+
+[node name="BuildingArea" type="Area2D" parent="." unique_id=594951549]
+position = Vector2(0, 12)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingArea" unique_id=1287436750]
+shape = SubResource("CircleShape2D_s7kha")
+debug_color = Color(1, 0, 0, 0.4117647)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

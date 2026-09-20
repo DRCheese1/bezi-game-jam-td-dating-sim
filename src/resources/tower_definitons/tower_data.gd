@@ -4,5 +4,10 @@ class_name TowerData
 @export var scene: PackedScene
 @export var icon: Texture2D
 @export var currency_type: String = "charm"
-@export var cost: float = 15.0
+@export var cost: int = 15
 @export var display_name: String = "Flirt Tower"
+@export var damage: int = 1
+@export var fire_rate: int = 1
+@export var tower_range: int = 75
+@export var tower_build_area: float = 10
+@export var building_area_offset: Vector2 = Vector2(0, 12)
