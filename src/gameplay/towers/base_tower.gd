@@ -11,6 +11,9 @@ var can_attack: bool = true
 
 @onready var attack_timer: Timer = $AttackTimer
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var building_area: Area2D = $BuildingArea
+@onready var building_collision_shape: CollisionShape2D = $BuildingArea/CollisionShape2D
+
 
 func _ready() -> void:
 	fire_rate = tower.fire_rate
@@ -20,6 +23,8 @@ func _ready() -> void:
 	attack_timer.wait_time = fire_rate
 	collision_shape_2d.shape.radius = tower_range
 	
+	building_area.position = tower.building_area_offset
+	building_collision_shape.shape.radius = tower.tower_build_area
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemies"):

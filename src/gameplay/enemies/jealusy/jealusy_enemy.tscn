@@ -39,7 +39,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BaseEnemy" unique_id=598291632 instance=ExtResource("1_u0gkl")]
+[node name="JealusyEnemy" unique_id=598291632 instance=ExtResource("1_u0gkl")]
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=208660997]
 sprite_frames = SubResource("SpriteFrames_1aoel")

@@ -6,8 +6,12 @@ extends System
 var selected_tower: TowerData
 var placing: bool = false
 var relationship_system: System
+var can_build: bool = true
+var in_area: Array[Area2D] = []
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var building_area: Area2D = $Sprite2D/BuildingArea
+@onready var collision_shape_2d: CollisionShape2D = $Sprite2D/BuildingArea/CollisionShape2D
 
 func _ready() -> void:
 	GameManager.register_system(system_name, self)
@@ -33,15 +37,27 @@ func tower_selected(tower):
 	else:
 		selected_tower = tower
 		placing = true
+		building_area.position = selected_tower.building_area_offset
+		collision_shape_2d.shape.radius = selected_tower.tower_build_area
 
 func _process(delta: float) -> void:
 	if placing == false:
 		sprite_2d.visible = false
 	elif placing == true:
+		if in_area.size() == 0:
+			can_build = true
+		else:
+			can_build = false
+		
+		if can_build:
+			sprite_2d.modulate = Color(0.0, 1.0, 0.0, 0.686)
+		else:
+			sprite_2d.modulate = Color(1.0, 0.0, 0.0, 0.686)
+		
 		sprite_2d.visible = true
 		sprite_2d.texture = selected_tower.icon
 		
-		sprite_2d.position = get_viewport().get_mouse_position()-get_viewport().get_visible_rect().size/2
+		sprite_2d.position = get_viewport().get_mouse_position()-get_viewport().get_visible_rect().size/2 + Vector2(0, -8)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if placing == false:
@@ -53,28 +69,22 @@ func _unhandled_input(event: InputEvent) -> void:
 			selected_tower = null
 			return
 		
+		if not can_build:
+			return
+		
 		var tower_scene: Area2D = selected_tower.scene.instantiate()
 		tower_scene.tower = selected_tower
 		tower_root.add_child(tower_scene)
-		tower_scene.position = get_viewport().get_mouse_position()-get_viewport().get_visible_rect().size/2
+		tower_scene.position = get_viewport().get_mouse_position()-get_viewport().get_visible_rect().size/2 + Vector2(0, -8)
 		
 		if not Input.is_action_pressed("continue_place"):
 			placing = false
 			selected_tower = null
 
 
-func _placement_allowed(target_position: Vector2) -> bool:
-	var space_state = get_viewport().find_world_2d().direct_space_state
-	
-	var query = PhysicsPointQueryParameters2D.new()
-	query.position = target_position
-	query.collide_with_areas = true
-	query.collide_with_bodies = false
-	
-	query.collision_mask = 2
-	
-	var results = space_state.intersect_point(query)
-	
-	return results.size() > 0
-	
-	return true
+func _on_building_area_area_entered(area: Area2D) -> void:
+	in_area.append(area)
+
+
+func _on_building_area_area_exited(area: Area2D) -> void:
+	in_area.erase(area)

@@ -53,6 +53,8 @@ func take_damage(amount: float):
 	_flash_hit()
 	
 	if health <= 0:
+		var wave_system = GameManager.access_system("WaveSpawner")
+		wave_system.enemy_count -= 1
 		queue_free()
 
 func _flash_hit() -> void:

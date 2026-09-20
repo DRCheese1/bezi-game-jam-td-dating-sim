@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bqekjwyhtrd4p" path="res://src/ui/hud/main_hud.tscn" id="8_86u7o"]
 [ext_resource type="Resource" uid="uid://bdfm8434sc5ta" path="res://src/resources/tower_definitons/flirt_tower.tres" id="8_llqnb"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_llqnb"]
+
 [node name="MainGame" type="Node" unique_id=1086910331]
 process_mode = 3
 script = ExtResource("1_3fed5")
@@ -43,6 +45,15 @@ metadata/_custom_type_script = "uid://brvewxiiwrnkv"
 visible = false
 modulate = Color(0.68235296, 1, 1, 0.6862745)
 z_index = 10
+
+[node name="BuildingArea" type="Area2D" parent="Systems/Building/Sprite2D" unique_id=2112326915]
+position = Vector2(0, 12)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Systems/Building/Sprite2D/BuildingArea" unique_id=1475247315]
+shape = SubResource("CircleShape2D_llqnb")
+debug_color = Color(1, 0, 0, 0.4117647)
 
 [node name="World" type="Node2D" parent="." unique_id=586138963]
 process_mode = 1
@@ -134,3 +145,6 @@ script = ExtResource("4_tk58t")
 
 [node name="DebugOverlay" parent="DebugLayer/DebugRoot" unique_id=1521454231 instance=ExtResource("4_ibp4d")]
 layout_mode = 1
+
+[connection signal="area_entered" from="Systems/Building/Sprite2D/BuildingArea" to="Systems/Building" method="_on_building_area_area_entered"]
+[connection signal="area_exited" from="Systems/Building/Sprite2D/BuildingArea" to="Systems/Building" method="_on_building_area_area_exited"]

@@ -3,6 +3,8 @@ extends Node
 var tower_root: Node2D
 var entity_root: Node2D
 
+var hud_root: Control
+
 var systems: Dictionary
 
 func access_system(system_name: String, sub_system: String = "") -> System:
@@ -32,3 +34,13 @@ func fatal_error(message: String, debug_message: String = ""):
 	OS.alert(message, "Fatal Error")
 	
 	get_tree().quit(1)
+
+func start_dialauge(timeline_name: String):
+	hud_root.visible = false
+	print("Dialauge started")
+	Dialogic.start(timeline_name)
+
+func end_dialauge():
+	hud_root.visible = true
+	var wave_system: System = access_system("WaveSpawner")
+	wave_system.next_wave_sequence()
