@@ -27,6 +27,7 @@ directories/dch_directory={
 "test-character": "res://src/gameplay/characters/test-character.dch"
 }
 directories/dtl_directory={
+"day2-timeline": "res://src/gameplay/timelines/day2-timeline.dtl",
 "main-timeline": "res://src/gameplay/timelines/main-timeline.dtl"
 }
 layout/style_directory={
@@ -78,7 +79,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/script_splitter/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 [file_customization]
 

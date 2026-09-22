@@ -1,0 +1,4 @@
+join test-character right
+test-character: continue
+[signal arg_type="dict" arg="{"charm":50}"]
+do GameManager.end_dialauge()
