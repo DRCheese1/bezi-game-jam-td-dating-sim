@@ -5,7 +5,6 @@ test-character: What brings you here?
 - You!
 	test-character: Aww. That's so cute! (+15 Charm)
 	[signal arg_type="dict" arg="{"charm":30}"]
-	[wait_input]
 - I'm here to be with someone very special...
 	test-character: Hmmm, I wonder who... (+15 Wit)
 	[signal arg_type="dict" arg="{"wit":30}"]

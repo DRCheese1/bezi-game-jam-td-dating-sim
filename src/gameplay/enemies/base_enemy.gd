@@ -7,11 +7,13 @@ class_name BaseEnemy
 
 var path_length: float = 0.0
 var flash_tween: Tween
+var punch_tween: Tween
 var relationship_system: System
 var health: int
 
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hit_particles: GPUParticles2D = $HitParticles
 
 func _ready() -> void:
 	visible = false
@@ -45,6 +47,7 @@ func take_damage(amount: int):
 	health -= amount
 	progress_bar.value = health
 	_flash_hit()
+	_spawn_hit_particles()
 	
 	if health <= 0:
 		_die()
@@ -53,10 +56,30 @@ func _flash_hit() -> void:
 	if flash_tween:
 		flash_tween.kill()  # stop any in-progress flash so hits don't stack weirdly
 
-	sprite_2d.modulate = Color(2, 2, 2)  # overshoot brighter than white for a punchier flash
+	sprite_2d.modulate = Color(2, 0.25, 0.25)  # overshoot brighter than white for a punchier flash
 
 	flash_tween = create_tween()
-	flash_tween.tween_property(sprite_2d, "modulate", Color(1, 1, 1), 0.15)
+	flash_tween.tween_property(sprite_2d, "modulate", Color(1, 1, 1), 0.5)
+
+func _spawn_hit_particles() -> void:
+	hit_particles.restart()  # resets and emits from frame 0, even if still finishing a previous burst
+	hit_particles.emitting = true
+	_punch_scale()
+
+func _punch_scale() -> void:
+	if punch_tween:
+		punch_tween.kill()
+	
+	punch_tween = create_tween()
+	
+	# Ease INTO a much lighter squash
+	punch_tween.tween_property(sprite_2d, "scale", Vector2(1.15, 0.80), 0.08).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+	# Brief hold at peak
+	punch_tween.tween_interval(0.04)
+	
+	# Recover with a gentle overshoot
+	punch_tween.tween_property(sprite_2d, "scale", Vector2.ONE, 0.45).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 func _die():
 	var wave_system = GameManager.access_system("WaveSpawner")
@@ -85,5 +108,7 @@ func _weighted_pick_from_arrays(items: Array[String], weights: Array[float], tot
 
 func _reached_end() -> void:
 	print("Reached end")
+	var wave_system = GameManager.access_system("WaveSpawner")
+	wave_system.enemy_count -= 1
 	relationship_system.modify_relationship(-enemy_data.damage)
 	queue_free()
