@@ -87,10 +87,6 @@ folder_colors={
 "res://src/debug/": "yellow"
 }
 
-[global_group]
-
-enemies="Group for all enemies"
-
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true

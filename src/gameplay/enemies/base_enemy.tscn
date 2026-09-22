@@ -43,7 +43,7 @@ damping_min = 40.0
 damping_max = 60.000004
 scale_min = 0.5
 
-[node name="BaseEnemy" type="Area2D" unique_id=598291632 groups=["enemies"]]
+[node name="BaseEnemy" type="Area2D" unique_id=598291632]
 script = ExtResource("1_wr6ee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=726132152]
@@ -71,5 +71,4 @@ lifetime = 0.4
 one_shot = true
 explosiveness = 0.85
 randomness = 0.4
-local_coords = true
 process_material = SubResource("ParticleProcessMaterial_wa6bl")

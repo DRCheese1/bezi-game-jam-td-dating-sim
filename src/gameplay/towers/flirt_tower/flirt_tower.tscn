@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bsicod7wijo7g"]
 
 [ext_resource type="PackedScene" uid="uid://hvc2fk1ghe3a" path="res://src/gameplay/towers/base_tower.tscn" id="1_k1kgg"]
+[ext_resource type="Script" uid="uid://5n3v8ya1l3je" path="res://src/gameplay/towers/flirt_tower/flirt_tower.gd" id="2_6r82w"]
 [ext_resource type="Texture2D" uid="uid://drw1at6jooglm" path="res://assets/art/characters/towers/tower_flirting.png" id="2_hum63"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oemwn"]
@@ -15,6 +16,7 @@ animations = [{
 }]
 
 [node name="FlirtTower" unique_id=1231075861 instance=ExtResource("1_k1kgg")]
+script = ExtResource("2_6r82w")
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=1103034566]
 sprite_frames = SubResource("SpriteFrames_oemwn")
