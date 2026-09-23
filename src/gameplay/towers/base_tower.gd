@@ -18,13 +18,19 @@ var can_attack: bool = true
 var path_a_tier: int = 0
 var path_b_tier: int = 0
 
+# Utility variables
+var relationship_system: System
+
 @onready var attack_timer: Timer = $AttackTimer
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var building_area: Area2D = $BuildingArea
 @onready var building_collision_shape: CollisionShape2D = $BuildingArea/CollisionShape2D
+@onready var tower_upgrade: Control = $TowerUpgrade
 
 
 func _ready() -> void:
+	relationship_system = GameManager.access_system("Relationship")
+	
 	fire_rate = tower.fire_rate
 	damage = tower.damage
 	tower_range = tower.tower_range
@@ -74,9 +80,9 @@ func _choose_target() -> BaseEnemy:
 
 # ---- Upgrade Logic ----
 
-func purchase_upgrade(path: String) -> void:
+func purchase_upgrade(path: String) -> bool:
 	if not can_upgrade_path(path):
-		return
+		return false
 	
 	var upgrade: UpgradeData
 	if path == "a":
@@ -86,9 +92,13 @@ func purchase_upgrade(path: String) -> void:
 		upgrade = tower.path_b[path_b_tier]
 		path_b_tier += 1
 	else:
-		return
+		return false
+	
+	if not relationship_system.spend_currency(upgrade.cost_type, upgrade.cost):
+		return false
 	
 	_apply_upgrade(upgrade)
+	return true
 
 func _apply_upgrade(upgrade: UpgradeData) -> void:
 	tower_range = int(tower_range * upgrade.range_multi + upgrade.range_add )
@@ -124,3 +134,10 @@ func can_upgrade_path(path: String) -> bool:
 
 
 # -<>- Upgrade Logic -<>-
+
+
+func _on_button_pressed() -> void:
+	if tower_upgrade.visible:
+		tower_upgrade.hide_ui()
+	else:
+		tower_upgrade.show_ui(self)

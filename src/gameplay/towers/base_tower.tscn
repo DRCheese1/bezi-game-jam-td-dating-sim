@@ -1,11 +1,22 @@
 [gd_scene format=3 uid="uid://hvc2fk1ghe3a"]
 
 [ext_resource type="Script" uid="uid://ddwf8fucrtace" path="res://src/gameplay/towers/base_tower.gd" id="1_oemwn"]
+[ext_resource type="PackedScene" uid="uid://dsglcjkplyxhb" path="res://src/ui/utilities/tower_upgrade_ui.tscn" id="2_f7lj1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nw32f"]
 radius = 53.009434
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7kha"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7lj1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4trom"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6eqi4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lw57e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u37wl"]
 
 [node name="BaseTower" type="Area2D" unique_id=1231075861]
 z_index = 5
@@ -29,6 +40,31 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_s7kha")
 debug_color = Color(1, 0, 0, 0.4117647)
 
+[node name="TowerUpgrade" parent="." unique_id=1109612248 instance=ExtResource("2_f7lj1")]
+visible = false
+anchors_preset = 2
+
+[node name="Button" type="Button" parent="." unique_id=897692923]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -22.0
+offset_right = 10.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_f7lj1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4trom")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6eqi4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lw57e")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u37wl")
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

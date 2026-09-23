@@ -3,24 +3,24 @@
 [ext_resource type="Script" uid="uid://vn3qqqkw4o6t" path="res://src/ui/utilities/tower_upgrade_ui.gd" id="1_mhk8l"]
 [ext_resource type="FontFile" uid="uid://pa1rlsqofepk" path="res://assets/art/ui/fonts/ThaleahFat.ttf" id="1_ouj0y"]
 [ext_resource type="FontFile" uid="uid://diu76rm326vmy" path="res://assets/art/ui/fonts/new-gen.ttf" id="2_mhk8l"]
+[ext_resource type="Texture2D" uid="uid://c8gb6vluou5yt" path="res://assets/art/ui/icons/lock_icon.png" id="4_xunaq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xunaq"]
 font = ExtResource("1_ouj0y")
-font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_nw32f"]
 font = ExtResource("2_mhk8l")
+font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_q2qwl"]
 font = ExtResource("1_ouj0y")
-font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phkuc"]
 bg_color = Color(0, 0.6965506, 0.1185051, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
-border_width_bottom = 1
+border_width_bottom = 2
 border_color = Color(0, 0.6079197, 0.096986644, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -32,7 +32,7 @@ bg_color = Color(1.4800206e-06, 0.41863695, 0.05255699, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
-border_width_bottom = 1
+border_width_bottom = 2
 border_color = Color(9.024516e-08, 0.3304719, 0.03460322, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -44,8 +44,20 @@ bg_color = Color(0, 0.5705183, 0.088411964, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
-border_width_bottom = 1
+border_width_bottom = 2
 border_color = Color(5.0296635e-06, 0.53961045, 0.082286336, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xunaq"]
+bg_color = Color(0.9999998, 0.17674032, 0.09948429, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.777076, 5.739592e-05, 0.12851512, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -53,13 +65,16 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_s7kha"]
 font = ExtResource("2_mhk8l")
+font_size = 8
 
 [node name="TowerUpgrade" type="Control" unique_id=1109612248]
 layout_mode = 3
-anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_left = 25.0
+offset_bottom = -25.0
 grow_vertical = 0
+mouse_filter = 2
 script = ExtResource("1_mhk8l")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=550792214]
@@ -67,8 +82,8 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -55.0
-offset_right = 104.0
+offset_top = -86.0
+offset_right = 304.0
 grow_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1646682746]
@@ -113,6 +128,7 @@ layout_mode = 2
 
 [node name="UpgradeAPanel" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer" unique_id=928542705]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel" unique_id=265752059]
 layout_mode = 2
@@ -128,14 +144,15 @@ label_settings = SubResource("LabelSettings_q2qwl")
 [node name="UpgradeABuyButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel/HBoxContainer/VBoxContainer" unique_id=474942734]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ouj0y")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_phkuc")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_la3fh")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wcg80")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_xunaq")
 text = "350"
 
 [node name="UpgradeADesc" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel/HBoxContainer" unique_id=1881442654]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 text = "Yap yap yap lorem ipsum dibsum"
 label_settings = SubResource("LabelSettings_s7kha")
@@ -143,11 +160,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="LockTextureA" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer" unique_id=1406511337]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_xunaq")
+
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1960188427]
 layout_mode = 2
 
 [node name="UpgradeBPanel" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2" unique_id=1273507138]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/UpgradeBPanel" unique_id=26375783]
 layout_mode = 2
@@ -163,20 +188,28 @@ label_settings = SubResource("LabelSettings_q2qwl")
 [node name="UpgradeBBuyButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/UpgradeBPanel/HBoxContainer/VBoxContainer" unique_id=87255191]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ouj0y")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_phkuc")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_la3fh")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wcg80")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_xunaq")
 text = "350"
 
 [node name="UpgradeBDesc" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/UpgradeBPanel/HBoxContainer" unique_id=650763836]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 text = "Yap yap yap lorem ipsum dibsum"
 label_settings = SubResource("LabelSettings_s7kha")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="LockTextureB" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2" unique_id=1106560150]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_xunaq")
 
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel" to="." method="_on_upgrade_a_panel_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel" to="." method="_on_upgrade_a_panel_mouse_exited"]

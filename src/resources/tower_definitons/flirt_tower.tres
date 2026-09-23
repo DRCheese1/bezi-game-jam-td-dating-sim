@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bsicod7wijo7g" path="res://src/gameplay/towers/flirt_tower/flirt_tower.tscn" id="1_lm70u"]
 [ext_resource type="Texture2D" uid="uid://drw1at6jooglm" path="res://assets/art/characters/towers/tower_flirting.png" id="1_t76a4"]
 [ext_resource type="Script" uid="uid://q54vdq3047u" path="res://src/resources/tower_definitons/upgrade_definitons/upgrade_data.gd" id="2_ovubg"]
+[ext_resource type="Resource" uid="uid://3apmikucbf5d" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/a_tier_1.tres" id="3_ufluu"]
+[ext_resource type="Resource" uid="uid://m8o7pon6fnl1" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/b_tier_1.tres" id="4_2vlnp"]
 
 [resource]
 script = ExtResource("1_dq1ch")
@@ -13,4 +15,6 @@ damage = 50
 fire_rate = 3
 tower_build_area = 15.0
 building_area_offset = Vector2(0, 14)
+path_a = Array[ExtResource("2_ovubg")]([ExtResource("3_ufluu")])
+path_b = Array[ExtResource("2_ovubg")]([ExtResource("4_2vlnp")])
 metadata/_custom_type_script = "uid://b0p8ebmgd2aex"
