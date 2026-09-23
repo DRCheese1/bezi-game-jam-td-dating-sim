@@ -3,8 +3,9 @@ class_name UpgradeData
 
 @export var upgrade_name: String
 @export var description: String
-@export var icon: Texture2D
 @export var cost: int
+@export var cost_type: String
+@export var cost_icon: Texture2D
 
 # Generic stat changes
 @export var range_add: float = 0.0

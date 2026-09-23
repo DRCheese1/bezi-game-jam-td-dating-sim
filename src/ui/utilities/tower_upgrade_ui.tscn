@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://dsglcjkplyxhb"]
+
+[ext_resource type="Script" uid="uid://vn3qqqkw4o6t" path="res://src/ui/utilities/tower_upgrade_ui.gd" id="1_mhk8l"]
+[ext_resource type="FontFile" uid="uid://pa1rlsqofepk" path="res://assets/art/ui/fonts/ThaleahFat.ttf" id="1_ouj0y"]
+[ext_resource type="FontFile" uid="uid://diu76rm326vmy" path="res://assets/art/ui/fonts/new-gen.ttf" id="2_mhk8l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xunaq"]
+font = ExtResource("1_ouj0y")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_nw32f"]
+font = ExtResource("2_mhk8l")
+
+[sub_resource type="LabelSettings" id="LabelSettings_q2qwl"]
+font = ExtResource("1_ouj0y")
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phkuc"]
+bg_color = Color(0, 0.6965506, 0.1185051, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0, 0.6079197, 0.096986644, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la3fh"]
+bg_color = Color(1.4800206e-06, 0.41863695, 0.05255699, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(9.024516e-08, 0.3304719, 0.03460322, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcg80"]
+bg_color = Color(0, 0.5705183, 0.088411964, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(5.0296635e-06, 0.53961045, 0.082286336, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_s7kha"]
+font = ExtResource("2_mhk8l")
+
+[node name="TowerUpgrade" type="Control" unique_id=1109612248]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+script = ExtResource("1_mhk8l")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=550792214]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+offset_right = 104.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1646682746]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1478267915]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=551054227]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1957993014]
+layout_mode = 2
+text = "Flirt tower"
+label_settings = SubResource("LabelSettings_xunaq")
+
+[node name="DamageLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1886128722]
+layout_mode = 2
+text = "Damage: 15"
+label_settings = SubResource("LabelSettings_nw32f")
+
+[node name="RangeLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=695534577]
+layout_mode = 2
+text = "Range: 75"
+label_settings = SubResource("LabelSettings_nw32f")
+
+[node name="FirerateLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=197939096]
+layout_mode = 2
+text = "Fire Rate: 3"
+label_settings = SubResource("LabelSettings_nw32f")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1454223796]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1610269574]
+layout_mode = 2
+
+[node name="UpgradeAPanel" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer" unique_id=928542705]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel" unique_id=265752059]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel/HBoxContainer" unique_id=1995086855]
+layout_mode = 2
+
+[node name="UpgradeAName" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel/HBoxContainer/VBoxContainer" unique_id=613205440]
+layout_mode = 2
+text = "Multishot"
+label_settings = SubResource("LabelSettings_q2qwl")
+
+[node name="UpgradeABuyButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel/HBoxContainer/VBoxContainer" unique_id=474942734]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ouj0y")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_phkuc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_la3fh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wcg80")
+text = "350"
+
+[node name="UpgradeADesc" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel/HBoxContainer" unique_id=1881442654]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Yap yap yap lorem ipsum dibsum"
+label_settings = SubResource("LabelSettings_s7kha")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1960188427]
+layout_mode = 2
+
+[node name="UpgradeBPanel" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2" unique_id=1273507138]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/UpgradeBPanel" unique_id=26375783]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/UpgradeBPanel/HBoxContainer" unique_id=1836639827]
+layout_mode = 2
+
+[node name="UpgradeBName" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/UpgradeBPanel/HBoxContainer/VBoxContainer" unique_id=756618548]
+layout_mode = 2
+text = "Multishot"
+label_settings = SubResource("LabelSettings_q2qwl")
+
+[node name="UpgradeBBuyButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/UpgradeBPanel/HBoxContainer/VBoxContainer" unique_id=87255191]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ouj0y")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_phkuc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_la3fh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wcg80")
+text = "350"
+
+[node name="UpgradeBDesc" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/UpgradeBPanel/HBoxContainer" unique_id=650763836]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Yap yap yap lorem ipsum dibsum"
+label_settings = SubResource("LabelSettings_s7kha")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel" to="." method="_on_upgrade_a_panel_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel" to="." method="_on_upgrade_a_panel_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel/HBoxContainer/VBoxContainer/UpgradeABuyButton" to="." method="_on_upgrade_a_buy_button_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/UpgradeBPanel" to="." method="_on_upgrade_b_panel_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/UpgradeBPanel" to="." method="_on_upgrade_b_panel_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/UpgradeBPanel/HBoxContainer/VBoxContainer/UpgradeBBuyButton" to="." method="_on_upgrade_b_buy_button_pressed"]

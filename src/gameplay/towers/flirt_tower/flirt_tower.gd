@@ -1,6 +1,6 @@
 extends BaseTower
 
-var multishot: int = 0
+var multishot: int = 1
 
 func _attack():
 	targets = targets.filter(func(t): return is_instance_valid(t))
