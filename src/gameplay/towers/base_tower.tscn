@@ -8,15 +8,15 @@ radius = 53.009434
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7kha"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7lj1"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cmuk4"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4trom"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0320a"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6eqi4"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_shr8y"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lw57e"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_urbah"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u37wl"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nus3h"]
 
 [node name="BaseTower" type="Area2D" unique_id=1231075861]
 z_index = 5
@@ -42,7 +42,8 @@ debug_color = Color(1, 0, 0, 0.4117647)
 
 [node name="TowerUpgrade" parent="." unique_id=1109612248 instance=ExtResource("2_f7lj1")]
 visible = false
-anchors_preset = 2
+offset_left = 0.0
+offset_bottom = 0.0
 
 [node name="Button" type="Button" parent="." unique_id=897692923]
 anchors_preset = 8
@@ -58,11 +59,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/normal = SubResource("StyleBoxFlat_f7lj1")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4trom")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6eqi4")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_lw57e")
-theme_override_styles/focus = SubResource("StyleBoxFlat_u37wl")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cmuk4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0320a")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_shr8y")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_urbah")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nus3h")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

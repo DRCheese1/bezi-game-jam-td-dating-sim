@@ -1,5 +1,7 @@
 extends Control
 
+const MARGIN := 25.0
+
 # Utility variables
 var tower: BaseTower
 var upgrade_a: UpgradeData
@@ -38,6 +40,7 @@ func show_ui(currenct_tower: BaseTower) -> void:
 	_init_path_b(path_b, tower.path_b_tier)
 	
 	visible = true
+	_flip_to_fit_screen()
 
 
 func hide_ui() -> void:
@@ -82,6 +85,33 @@ func _init_path_b(path: Array[UpgradeData], tier: int) -> void:
 		upgrade_b_buy_button.disabled = true
 		upgrade_b_buy_button.text = "Locked"
 		lock_texture_b.visible = true
+
+
+func _flip_to_fit_screen() -> void:
+	await get_tree().process_frame
+
+	var rect := get_global_rect()
+	var screen := get_viewport_rect().size
+ 	
+	# Horizontal: flip left/right around the anchor point
+	if rect.position.x + rect.size.x > screen.x:
+		offset_right = -MARGIN
+		offset_left = -MARGIN - rect.size.x
+		grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	else:
+		offset_left = MARGIN
+		offset_right = MARGIN + rect.size.x
+		grow_horizontal = Control.GROW_DIRECTION_END
+
+	# Vertical: flip up/down around the anchor point
+	if rect.position.y < 0:
+		offset_top = MARGIN
+		offset_bottom = MARGIN + rect.size.y
+		grow_vertical = Control.GROW_DIRECTION_END
+	else:
+		offset_bottom = -MARGIN
+		offset_top = -MARGIN - rect.size.y
+		grow_vertical = Control.GROW_DIRECTION_BEGIN
 
 
 func _show_differnces(path: String, tier: int) -> void:

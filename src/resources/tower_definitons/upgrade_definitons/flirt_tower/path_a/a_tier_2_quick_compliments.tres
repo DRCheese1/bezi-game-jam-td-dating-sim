@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://foc1ls815e8j"]
+
+[ext_resource type="Script" uid="uid://q54vdq3047u" path="res://src/resources/tower_definitons/upgrade_definitons/upgrade_data.gd" id="1_b3d6d"]
+
+[resource]
+script = ExtResource("1_b3d6d")
+upgrade_name = "Quick compliments"
+description = "Quick compliments means more flirting"
+cost = 15
+cost_type = "charm"
+range_add = 25.0
+fire_rate_add = -1.0
+metadata/_custom_type_script = "uid://q54vdq3047u"

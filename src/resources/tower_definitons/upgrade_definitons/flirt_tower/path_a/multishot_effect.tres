@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MultishotEffect" format=3 uid="uid://ba23t1nu62i64"]
+
+[ext_resource type="Script" uid="uid://hn566r30rrbw" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_a/multishot_upgrade_effect.gd" id="1_7r34d"]
+
+[resource]
+script = ExtResource("1_7r34d")
+metadata/_custom_type_script = "uid://hn566r30rrbw"

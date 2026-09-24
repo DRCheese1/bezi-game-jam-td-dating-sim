@@ -69,6 +69,7 @@ font_size = 8
 
 [node name="TowerUpgrade" type="Control" unique_id=1109612248]
 layout_mode = 3
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 25.0
@@ -143,6 +144,7 @@ label_settings = SubResource("LabelSettings_q2qwl")
 
 [node name="UpgradeABuyButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/UpgradeAPanel/HBoxContainer/VBoxContainer" unique_id=474942734]
 layout_mode = 2
+mouse_filter = 1
 theme_override_fonts/font = ExtResource("1_ouj0y")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_phkuc")
@@ -187,6 +189,7 @@ label_settings = SubResource("LabelSettings_q2qwl")
 
 [node name="UpgradeBBuyButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/UpgradeBPanel/HBoxContainer/VBoxContainer" unique_id=87255191]
 layout_mode = 2
+mouse_filter = 1
 theme_override_fonts/font = ExtResource("1_ouj0y")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_phkuc")

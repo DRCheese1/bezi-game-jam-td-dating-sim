@@ -4,8 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://bsicod7wijo7g" path="res://src/gameplay/towers/flirt_tower/flirt_tower.tscn" id="1_lm70u"]
 [ext_resource type="Texture2D" uid="uid://drw1at6jooglm" path="res://assets/art/characters/towers/tower_flirting.png" id="1_t76a4"]
 [ext_resource type="Script" uid="uid://q54vdq3047u" path="res://src/resources/tower_definitons/upgrade_definitons/upgrade_data.gd" id="2_ovubg"]
-[ext_resource type="Resource" uid="uid://3apmikucbf5d" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/a_tier_1.tres" id="3_ufluu"]
-[ext_resource type="Resource" uid="uid://m8o7pon6fnl1" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/b_tier_1.tres" id="4_2vlnp"]
+[ext_resource type="Resource" uid="uid://bcglfyusc2mga" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_a/a_tier_1_longer_sight.tres" id="3_xsuf4"]
+[ext_resource type="Resource" uid="uid://foc1ls815e8j" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_a/a_tier_2_quick_compliments.tres" id="4_3b8oi"]
+[ext_resource type="Resource" uid="uid://btbkr2sbaiqce" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_a/a_tier_3_double_flirt.tres" id="5_8ilgd"]
+[ext_resource type="Resource" uid="uid://cump30l28j5vy" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_a/a_tier_4_faster_flirt.tres" id="6_cl1ik"]
+[ext_resource type="Resource" uid="uid://wfj1qlcmfq72" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_a/a_tier_5_triple_flirt.tres" id="7_aaexi"]
+[ext_resource type="Resource" uid="uid://ctol1egau3k6e" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_b/b_tier_1_harder_hits.tres" id="8_rv5sx"]
+[ext_resource type="Resource" uid="uid://8b5a00ojjtda" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_b/b_tier_2_effective_flirting.tres" id="9_1vpsw"]
+[ext_resource type="Resource" uid="uid://dmx3myygo17rr" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_b/b_tier_3_master_of_flirt.tres" id="10_3w8r2"]
+[ext_resource type="Resource" uid="uid://i1fstuwaf3ub" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_b/b_tier_4_even_better.tres" id="11_va640"]
+[ext_resource type="Resource" uid="uid://bvx54n24y6x0o" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_b/b_tier_5_railgun_flirt.tres" id="12_s6jtn"]
 
 [resource]
 script = ExtResource("1_dq1ch")
@@ -15,6 +23,6 @@ damage = 50
 fire_rate = 3
 tower_build_area = 15.0
 building_area_offset = Vector2(0, 14)
-path_a = Array[ExtResource("2_ovubg")]([ExtResource("3_ufluu")])
-path_b = Array[ExtResource("2_ovubg")]([ExtResource("4_2vlnp")])
+path_a = Array[ExtResource("2_ovubg")]([ExtResource("3_xsuf4"), ExtResource("4_3b8oi"), ExtResource("5_8ilgd"), ExtResource("6_cl1ik"), ExtResource("7_aaexi")])
+path_b = Array[ExtResource("2_ovubg")]([ExtResource("8_rv5sx"), ExtResource("9_1vpsw"), ExtResource("10_3w8r2"), ExtResource("11_va640"), ExtResource("12_s6jtn")])
 metadata/_custom_type_script = "uid://b0p8ebmgd2aex"

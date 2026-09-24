@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://wfj1qlcmfq72"]
+
+[ext_resource type="Resource" uid="uid://ba23t1nu62i64" path="res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_a/multishot_effect.tres" id="1_6rr7a"]
+[ext_resource type="Script" uid="uid://q54vdq3047u" path="res://src/resources/tower_definitons/upgrade_definitons/upgrade_data.gd" id="1_osnpc"]
+
+[resource]
+script = ExtResource("1_osnpc")
+upgrade_name = "Triple flirt"
+description = "Triple flirting is the best flirting"
+cost = 60
+cost_type = "charm"
+range_add = 50.0
+damage_add = 50.0
+custom_effect = ExtResource("1_6rr7a")
+metadata/_custom_type_script = "uid://q54vdq3047u"
