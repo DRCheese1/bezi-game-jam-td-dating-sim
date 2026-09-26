@@ -1,4 +1,4 @@
-join test-character right
-test-character: continue
+join ember right
+ember: continue
 [signal arg_type="dict" arg="{"charm":50}"]
 do GameManager.end_dialauge()

@@ -24,6 +24,7 @@ Dialogic="*uid://ds2q0uclmolvu"
 [dialogic]
 
 directories/dch_directory={
+"ember": "res://src/gameplay/characters/ember.dch",
 "test-character": "res://src/gameplay/characters/test-character.dch"
 }
 directories/dtl_directory={

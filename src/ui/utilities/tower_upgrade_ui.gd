@@ -7,6 +7,9 @@ var tower: BaseTower
 var upgrade_a: UpgradeData
 var upgrade_b: UpgradeData
 
+# Utility nodes
+@onready var panel: PanelContainer = $PanelContainer
+
 # Main tower description
 @onready var name_label: Label = $PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/NameLabel
 @onready var damage_label: Label = $PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/DamageLabel
@@ -90,27 +93,33 @@ func _init_path_b(path: Array[UpgradeData], tier: int) -> void:
 func _flip_to_fit_screen() -> void:
 	await get_tree().process_frame
 
-	var rect := get_global_rect()
+	var rect := panel.get_global_rect()
 	var screen := get_viewport_rect().size
- 	
-	# Horizontal: flip left/right around the anchor point
-	if rect.position.x + rect.size.x > screen.x:
-		offset_right = -MARGIN
+
+	# Convert world-space rect into actual screen-space rect using the camera transform
+	var canvas_transform := get_viewport().canvas_transform
+	var top_left: Vector2 = canvas_transform * rect.position
+	var bottom_right: Vector2 = canvas_transform * (rect.position + rect.size)
+	var screen_rect := Rect2(top_left, bottom_right - top_left)
+	
+	# Horizontal
+	if screen_rect.position.x + screen_rect.size.x > screen.x:
 		offset_left = -MARGIN - rect.size.x
+		offset_right = -MARGIN
 		grow_horizontal = Control.GROW_DIRECTION_BEGIN
-	else:
+	elif screen_rect.position.x < 0:
 		offset_left = MARGIN
 		offset_right = MARGIN + rect.size.x
 		grow_horizontal = Control.GROW_DIRECTION_END
 
-	# Vertical: flip up/down around the anchor point
-	if rect.position.y < 0:
+	# Vertical
+	if screen_rect.position.y < 0:
 		offset_top = MARGIN
 		offset_bottom = MARGIN + rect.size.y
 		grow_vertical = Control.GROW_DIRECTION_END
-	else:
-		offset_bottom = -MARGIN
+	elif screen_rect.position.y + screen_rect.size.y > screen.y:
 		offset_top = -MARGIN - rect.size.y
+		offset_bottom = -MARGIN
 		grow_vertical = Control.GROW_DIRECTION_BEGIN
 
 

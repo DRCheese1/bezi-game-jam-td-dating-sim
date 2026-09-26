@@ -1,15 +1,15 @@
-join test-character left [animation="Fade In"]
-test-character: Hello! Welcome to this place!
-test-character: What brings you here?
+join ember (normal) right [animation="Fade In"]
+ember: Hello! Welcome to this place!
+ember: What brings you here?
 [wait time="0.1"]
 - You!
-	test-character: Aww. That's so cute! (+30 Charm)
+	ember: Aww. That's so cute! (+30 Charm)
 	[signal arg_type="dict" arg="{"charm":30}"]
 - I'm here to be with someone very special...
-	test-character: Hmmm, I wonder who... (+30 Wit)
+	ember: Hmmm, I wonder who... (+30 Wit)
 	[signal arg_type="dict" arg="{"wit":30}"]
 - I want to defend you.
-	test-character: That's great to hear. I trust that you will do a great job. (+30 Trust)
+	ember: That's great to hear. I trust that you will do a great job. (+30 Trust)
 	[signal arg_type="dict" arg="{"trust":30}"]
-test-character: Better get onto defending then...
+ember: Better get onto defending then...
 do GameManager.end_dialauge()
