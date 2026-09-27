@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c5s4idyh7uyn0"]
+
+[ext_resource type="Script" uid="uid://7ofd0dwep20s" path="res://tools/upgrade_tree_editor/upgrade_tree_editor.gd" id="1_qug0s"]
+[ext_resource type="Resource" uid="uid://bdfm8434sc5ta" path="res://src/resources/tower_definitons/flirt_tower.tres" id="2_kf5to"]
+
+[node name="UpgradeTreeEditor" type="Control" unique_id=576732322]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qug0s")
+tower_data = ExtResource("2_kf5to")

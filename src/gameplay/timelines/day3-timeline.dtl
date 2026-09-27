@@ -1,0 +1,45 @@
+join ember (normal) right [animation="Fade In"]
+ember: Can I ask you something? A bit more serious than usual.
+ember: Why do you keep showing up for me?
+ember: You don't have to answer that. I just... find myself wondering.
+[wait time="0.1"]
+- Because I want to know everything about you.
+	ember: That's a very intense answer for a Tuesday. (+20 Charm)
+	[signal arg_type="dict" arg="{"charm":20}"]
+	ember: Everything, though? That's a tall order. Where would you even start?
+	- With whatever you're willing to give me.
+		ember: That's a patient answer. I don't hear those often. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+	- With today. The rest can wait.
+		ember: I like that. One day at a time. (+10 Charm)
+		[signal arg_type="dict" arg="{"charm":10}"]
+- Honestly? I'm a little scared of what happens if I don't.
+	ember (shocked): Oh. I wasn't expecting that. (Vulnerability risk)
+	do GameManager.apply_vulnerability_risk(20, 0.6)
+	if {last_vulnerability_success} == true:
+		ember (sad): Scared how? Scared for me, or scared of losing this? I want to understand.
+	else:
+		ember (shocked): That's... a lot to sit with. I need a moment before I know how to respond.
+	- Both, if I'm honest.
+		ember (crying): That's a lot to carry for someone you just met. (Vulnerability risk)
+		do GameManager.apply_vulnerability_risk(10, 0.6)
+		if {last_vulnerability_success} == true:
+			ember: Thank you for carrying it anyway.
+		else:
+			ember (sad): I don't know if I'm ready to be someone's whole reason yet.
+	- Scared of what it'd mean if I stopped caring.
+		ember (sad): I don't think you're the type to stop caring. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+- Someone has to keep the doubts away.
+	ember: A very noble answer. Consistent, too. (+20 Trust)
+	[signal arg_type="dict" arg="{"trust":20}"]
+	ember: Is that all it is to you? A job to be consistent at?
+	- It stopped being just a job a while ago.
+		ember: I was hoping you'd say that. (+10 Charm)
+		[signal arg_type="dict" arg="{"charm":10}"]
+	- Consistency is its own kind of caring.
+		ember: That's a very interesting way of putting it. (+10 Wit)
+		[signal arg_type="dict" arg="{"wit":10}"]
+ember: I don't know why I asked that. Maybe I just needed to hear it.
+ember: Let's get moving before I overthink it further.
+do GameManager.end_dialauge()

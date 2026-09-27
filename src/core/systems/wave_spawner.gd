@@ -19,8 +19,11 @@ var enemy_count: int = 0:
 		if enemy_count == 0:
 			next_wave.emit()
 
+var dead: bool = false
+
 func _ready() -> void:
 	GameManager.register_system(system_name, self)
+	GameManager.access_system("Relationship").relationship_failed.connect(func(): dead = true)
 	
 	for enemy in enemy_pool:
 		enemy.capture_base_stats()
@@ -57,6 +60,8 @@ func _spawn_wave(current_wave: int):
 	
 	for group in wave:
 		for enemy_data in group:
+			if dead:
+				return
 			var enemy = enemy_data.scene.instantiate()
 			enemy.enemy_data = enemy_data
 			enemy.path_2d = path_2d

@@ -1,15 +1,42 @@
 join ember (normal) right [animation="Fade In"]
-ember: Hello! Welcome to this place!
-ember: What brings you here?
+ember: Oh! Hello there.
+ember: I wasn't expecting anyone to actually show up today.
+ember: Sorry, that came out weird. I just meant... it's nice to see a new face.
+ember: So, tell me. What brings you here?
 [wait time="0.1"]
 - You!
-	ember: Aww. That's so cute! (+30 Charm)
-	[signal arg_type="dict" arg="{"charm":30}"]
+	ember (smug): Aww. That's forward, but I'll take it. (+20 Charm)
+	[signal arg_type="dict" arg="{"charm":20}"]
+	ember: So, forward and direct. I like that combination. Are you always like this?
+	- Only when I mean it.
+		ember: Oh, now that's just unfair. (+10 Charm)
+		[signal arg_type="dict" arg="{"charm":10}"]
+	- Only around people worth being direct with.
+		ember: That's a good line. I might steal it. (+10 Wit)
+		[signal arg_type="dict" arg="{"wit":10}"]
 - I'm here to be with someone very special...
-	ember: Hmmm, I wonder who... (+30 Wit)
-	[signal arg_type="dict" arg="{"wit":30}"]
+	ember: Hmmm. I wonder who that could be. (+20 Wit)
+	[signal arg_type="dict" arg="{"wit":20}"]
+	ember: You're going to keep me guessing all day, aren't you.
+	- Maybe. Keeps things interesting.
+		ember: I do like interesting. (+10 Wit)
+		[signal arg_type="dict" arg="{"wit":10}"]
+	- I could just tell you, if you want.
+		ember: No, no — let me have the mystery a little longer. (+10 Charm)
+		[signal arg_type="dict" arg="{"charm":10}"]
 - I want to defend you.
-	ember: That's great to hear. I trust that you will do a great job. (+30 Trust)
-	[signal arg_type="dict" arg="{"trust":30}"]
-ember: Better get onto defending then...
+	ember: That's... surprisingly sincere for a first hello. (Vulnerability risk)
+	do GameManager.apply_vulnerability_risk(20, 0.55)
+	if {last_vulnerability_success} == true:
+		ember: Most people lead with a joke. You led with a promise. I like that more than I expected to.
+	else:
+		ember (sad): That's... a lot of sincerity for a first hello. I don't know what to do with that yet.
+	- I don't make promises I can't keep.
+		ember: I'm going to hold you to that. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+	- I just say what I mean.
+		ember: That's rarer than you'd think. (+10 Wit)
+		[signal arg_type="dict" arg="{"wit":10}"]
+ember: Well, whatever brought you here, I'm glad you came.
+ember: Something tells me it's about to get busy, though.
 do GameManager.end_dialauge()

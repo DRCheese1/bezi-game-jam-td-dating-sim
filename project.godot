@@ -28,7 +28,16 @@ directories/dch_directory={
 "test-character": "res://src/gameplay/characters/test-character.dch"
 }
 directories/dtl_directory={
+"day10-timeline": "res://src/gameplay/timelines/day10-timeline.dtl",
 "day2-timeline": "res://src/gameplay/timelines/day2-timeline.dtl",
+"day3-timelines": "res://src/gameplay/timelines/day3-timeline.dtl",
+"day4-timeline": "res://src/gameplay/timelines/day4-timeline.dtl",
+"day5-timeline": "res://src/gameplay/timelines/day5-timeline.dtl",
+"day6-timeline": "res://src/gameplay/timelines/day6-timeline.dtl",
+"day7-timeline": "res://src/gameplay/timelines/day7-timeline.dtl",
+"day8-timeline": "res://src/gameplay/timelines/day8-timeline.dtl",
+"day9-timeline": "res://src/gameplay/timelines/day9-timeline.dtl",
+"death-timeline": "res://src/gameplay/timelines/death-timeline.dtl",
 "main-timeline": "res://src/gameplay/timelines/main-timeline.dtl"
 }
 layout/style_directory={
@@ -69,7 +78,9 @@ audio/channel_defaults={
 }
 layout/style_list=["res://src/gameplay/timelines/style.tres"]
 layout/default_style="res://src/gameplay/timelines/style.tres"
-variables={}
+variables={
+"last_vulnerability_success": false
+}
 
 [display]
 
@@ -85,7 +96,10 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://src/debug/": "yellow"
+"res://addons/": "gray",
+"res://assets/": "teal",
+"res://src/debug/": "yellow",
+"res://tools/": "purple"
 }
 
 [gui]

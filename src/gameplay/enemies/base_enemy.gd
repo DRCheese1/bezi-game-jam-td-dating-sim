@@ -18,6 +18,7 @@ var health: int
 func _ready() -> void:
 	visible = false
 	relationship_system = GameManager.access_system("Relationship")
+	relationship_system.relationship_failed.connect(despawn)
 	
 	progress_bar.max_value = enemy_data.health
 	progress_bar.value = enemy_data.health
@@ -41,6 +42,10 @@ func _process(delta: float) -> void:
 	# Calculating position based on distance travelled
 	var local_point: Vector2 = path_2d.curve.sample_baked(distance)
 	global_position = path_2d.to_global(local_point)
+
+
+func despawn() -> void:
+	queue_free()
 
 
 func take_damage(amount: int):

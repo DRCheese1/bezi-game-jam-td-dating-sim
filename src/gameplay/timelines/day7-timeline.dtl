@@ -1,0 +1,44 @@
+join ember (crying) right [animation="Fade In"]
+ember (crying): They showed up. My ex.
+ember: I didn't know what to say. I just froze.
+ember (sad): I feel like I'm failing you by even letting it get to me.
+[wait time="0.1"]
+- You didn't fail anyone. You're still here.
+	ember (sad): I want to believe that. (+22 Charm)
+	[signal arg_type="dict" arg="{"charm":22}"]
+	ember: Maybe I will, eventually. With enough reminders.
+	- I'll remind you as many times as it takes.
+		ember: That's a big promise. (+10 Charm)
+		[signal arg_type="dict" arg="{"charm":10}"]
+	- You don't need reminders. You know it already.
+		ember: Maybe I do. I just needed someone to say it. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+- I'm not going to pretend that didn't hurt to hear.
+	ember (shocked): That's fair. I'm sorry — I should've told you sooner. (Vulnerability risk)
+	do GameManager.apply_vulnerability_risk(24, 0.7)
+	if {last_vulnerability_success} == true:
+		ember (crying): I was scared you'd leave if I did. Thank you for staying anyway.
+	else:
+		ember (crying): I don't know how to fix this right now. I'm sorry.
+	- I'm not going anywhere. But thank you for telling me.
+		ember (sad): Thank you for staying to hear it. (Vulnerability risk)
+		do GameManager.apply_vulnerability_risk(10, 0.7)
+		if {last_vulnerability_success} == true:
+			ember: That's exactly what I needed today.
+		else:
+			ember (sad): I wish I could believe that as easily as you say it.
+	- Next time, tell me sooner. I can handle it.
+		ember: Okay. I'll try. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+- Baggage like that doesn't scare me off.
+	ember: Bold thing to say to the person literally made of baggage today. (+22 Wit)
+	[signal arg_type="dict" arg="{"wit":22}"]
+	ember: I needed the joke more than the sympathy, honestly.
+	- Noted. More jokes, less sympathy.
+		ember (smug): Perfect. Don't change a thing. (+10 Wit)
+		[signal arg_type="dict" arg="{"wit":10}"]
+	- I can do both, if you need it.
+		ember: Having options is nice, actually. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+ember (sad): Let's put it behind us. Literally, if we have to.
+do GameManager.end_dialauge()

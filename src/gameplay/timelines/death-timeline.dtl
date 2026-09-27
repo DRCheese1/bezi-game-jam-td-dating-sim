@@ -1,0 +1,8 @@
+join ember (broken_heart) right [animation="Fade In"]
+ember: I... I can't do this anymore.
+ember: I wanted to believe we could make it. I really did.
+[wait time="0.1"]
+ember (crying): Maybe some things just aren't meant to be defended forever.
+ember (sad): Goodbye.
+leave ember [animation="Fade Out"]
+do GameManager.on_relationship_failed()

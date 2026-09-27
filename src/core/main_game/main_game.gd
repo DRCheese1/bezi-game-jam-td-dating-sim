@@ -18,12 +18,9 @@ var spawn_system: System
 @onready var transition_root: Control = %TransitionRoot
 @onready var debug_root: Control = %DebugRoot
 
-func quit_game() -> void:
-	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
-	get_tree().quit()
-
-
 func _ready() -> void:
+	get_tree().paused = false
+	
 	if not hud_root:
 		print("no huds")
 	else:
@@ -34,6 +31,7 @@ func _ready() -> void:
 	GameManager.access_system("Relationship").relationship_failed.connect(_on_relationship_failed)
 	spawn_system = GameManager.access_system("WaveSpawner")
 	GameManager.hud_root = hud_root
+	
 	GameManager.start_dialauge("main-timeline")
 
 
@@ -45,7 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		debug_root.toggle_debug_layer()
 	
 	if event.is_action_pressed(&"debug_quit"):
-		quit_game()
+		Utilities.quit_game(self)
 	
 	if event.is_action_pressed("testspawn"):
 		spawn_system.test_wave()
@@ -53,4 +51,4 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_relationship_failed():
 	print("ded")
-	get_tree().paused = true
+	GameManager.start_dialauge("death-timeline")

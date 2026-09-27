@@ -18,3 +18,7 @@ class_name TowerData
 # Upgrades
 @export var path_a: Array[UpgradeData]
 @export var path_b: Array[UpgradeData]
+
+# Folders new upgrades get saved into (e.g. res://.../flirt_tower/path_a/)
+@export_dir var path_a_dir: String = ""
+@export_dir var path_b_dir: String = ""

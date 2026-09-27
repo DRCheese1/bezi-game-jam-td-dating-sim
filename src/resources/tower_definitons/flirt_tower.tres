@@ -25,4 +25,6 @@ tower_build_area = 15.0
 building_area_offset = Vector2(0, 14)
 path_a = Array[ExtResource("2_ovubg")]([ExtResource("3_xsuf4"), ExtResource("4_3b8oi"), ExtResource("5_8ilgd"), ExtResource("6_cl1ik"), ExtResource("7_aaexi")])
 path_b = Array[ExtResource("2_ovubg")]([ExtResource("8_rv5sx"), ExtResource("9_1vpsw"), ExtResource("10_3w8r2"), ExtResource("11_va640"), ExtResource("12_s6jtn")])
+path_a_dir = "res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_a/"
+path_b_dir = "res://src/resources/tower_definitons/upgrade_definitons/flirt_tower/path_b/"
 metadata/_custom_type_script = "uid://b0p8ebmgd2aex"

@@ -1,0 +1,41 @@
+join ember (normal) right [animation="Fade In"]
+ember: Five days. That's actually something of a record for me.
+ember (smug): Can I be a little vain and ask how I'm doing? Be honest.
+[wait time="0.1"]
+- You're doing amazing. Better than amazing.
+	ember: Okay, now you're just showing off with the compliments. (+20 Charm)
+	[signal arg_type="dict" arg="{"charm":20}"]
+	ember: Keep going. I won't stop you.
+	- You're stubborn, sharp, and worth every wave.
+		ember: Okay, "worth every wave" got me. (+10 Charm)
+		[signal arg_type="dict" arg="{"charm":10}"]
+	- I think that's enough ego for one day.
+		ember: Fair. I'll take what I got. (+10 Wit)
+		[signal arg_type="dict" arg="{"wit":10}"]
+- You're doing fine. It's me who should be nervous.
+	ember: Ha — a little self-deprecating, but I appreciate the honesty. (+20 Wit)
+	[signal arg_type="dict" arg="{"wit":20}"]
+	ember: Don't be nervous. I don't bite. Usually.
+	- Noted. I'll stay alert anyway.
+		ember: Smart. I like a little caution. (+10 Wit)
+		[signal arg_type="dict" arg="{"wit":10}"]
+	- Then don't give me a reason to be.
+		ember: Deal. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+- I'm proud of how far we've come.
+	ember: That's... really sweet, actually. (+20 Trust)
+	[signal arg_type="dict" arg="{"trust":20}"]
+	ember: I don't think I've said this back yet, but — same. I'm proud of us too.
+	- "Us." I like hearing you say that.
+		ember: Get used to it. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+	- Then let's keep giving ourselves reasons to be.
+		ember (sad): That means more than you'd guess. (Vulnerability risk)
+		do GameManager.apply_vulnerability_risk(10, 0.65)
+		if {last_vulnerability_success} == true:
+			ember: I don't say that kind of thing lightly. I meant it.
+		else:
+			ember (sad): I don't know why that's harder to say than it should be.
+ember: Okay, enough vanity for one day.
+ember: Let's not let it go to my head before the wave hits.
+do GameManager.end_dialauge()

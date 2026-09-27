@@ -30,6 +30,7 @@ var relationship_system: System
 
 func _ready() -> void:
 	relationship_system = GameManager.access_system("Relationship")
+	collision_shape_2d.shape = collision_shape_2d.shape.duplicate()
 	
 	fire_rate = tower.fire_rate
 	damage = tower.damage
@@ -104,6 +105,8 @@ func _apply_upgrade(upgrade: UpgradeData) -> void:
 	tower_range = int(tower_range * upgrade.range_multi + upgrade.range_add )
 	damage = int(damage * upgrade.damage_multi + upgrade.damage_add )
 	fire_rate = (fire_rate * upgrade.fire_rate_multi + upgrade.fire_rate_add)
+	
+	collision_shape_2d.shape.radius = tower_range
 	
 	if upgrade.custom_effect:
 		upgrade.custom_effect.apply(self)

@@ -1,5 +1,7 @@
 extends Node
 
+signal show_death_ui()
+
 var tower_root: Node2D
 var entity_root: Node2D
 
@@ -44,3 +46,20 @@ func end_dialauge():
 	hud_root.visible = true
 	var wave_system: System = access_system("WaveSpawner")
 	wave_system.next_wave_sequence()
+
+func apply_vulnerability_risk(amount: float, success_chance: float) -> void:
+	var relationship = access_system("Relationship")
+	relationship.apply_vulnerability_risk(amount, success_chance)
+
+func reset_gamemanager() -> void:
+	tower_root = null
+	entity_root = null
+	hud_root = null
+	systems = {}
+
+func on_relationship_failed() -> void:
+	Dialogic.end_timeline(true)
+	await get_tree().process_frame
+	show_death_ui.emit()
+	await get_tree().process_frame
+	get_tree().paused = true

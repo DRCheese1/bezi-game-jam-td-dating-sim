@@ -1,0 +1,44 @@
+join ember (normal) right [animation="Fade In"]
+ember (shocked_confused): So. I heard something today.
+ember: An ex of mine is apparently back in town.
+ember (sad): I don't know how I feel about it, and that scares me a little.
+[wait time="0.1"]
+- They don't matter. Not compared to this.
+	ember: I want to believe that so badly. (+22 Charm)
+	[signal arg_type="dict" arg="{"charm":22}"]
+	ember: Say it again, maybe it'll stick better the second time.
+	- They don't matter. You do.
+		ember: Okay, that one actually stuck. (+10 Charm)
+		[signal arg_type="dict" arg="{"charm":10}"]
+	- I can't make old feelings disappear, but I can be here now.
+		ember (sad): That's more honest than I expected. I appreciate it. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+- Do you still have feelings for them?
+	ember (sad): I don't know. Is that a terrible thing to admit? (Vulnerability risk)
+	do GameManager.apply_vulnerability_risk(22, 0.65)
+	if {last_vulnerability_success} == true:
+		ember (crying): Thank you for not pretending the question doesn't matter.
+	else:
+		ember (sad): I shouldn't have brought it up like that. It wasn't fair to you.
+	- It's not terrible. It's honest.
+		ember (sad): I needed to hear that more than "no, of course not." (Vulnerability risk)
+		do GameManager.apply_vulnerability_risk(10, 0.65)
+		if {last_vulnerability_success} == true:
+			ember: Honesty's harder than people give it credit for.
+		else:
+			ember (sad): I wish honesty felt easier than this.
+	- Whatever the answer is, we'll figure it out.
+		ember: "We." Okay. I can work with that. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+- Whatever happens, we'll handle it together.
+	ember: Together. I like the sound of that word right now. (+22 Trust)
+	[signal arg_type="dict" arg="{"trust":22}"]
+	ember: It's been a while since "together" felt safe to say.
+	- It's safe with me.
+		ember (sad): I want to believe that. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+	- Then let's make it safe again.
+		ember: Deal. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+ember (sad): Let's just focus on today. I'll figure the rest out.
+do GameManager.end_dialauge()

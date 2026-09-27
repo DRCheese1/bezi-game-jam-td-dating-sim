@@ -1,0 +1,45 @@
+join ember (sad) right [animation="Fade In"]
+ember (sad): Sorry. I'm a little off today.
+ember: Yesterday was rough, and I keep replaying it.
+ember: I keep wondering if I'm asking too much of you, showing up like this.
+[wait time="0.1"]
+- You could never ask too much of me.
+	ember: I needed to hear that more than you know. (+20 Charm)
+	[signal arg_type="dict" arg="{"charm":20}"]
+	ember: Don't tell anyone I got a little emotional there.
+	- Your secret's safe with me.
+		ember: Good. I have a reputation to protect. (+10 Wit)
+		[signal arg_type="dict" arg="{"wit":10}"]
+	- I liked seeing it, actually.
+		ember (sad): That's either very sweet or a little concerning. (+10 Charm)
+		[signal arg_type="dict" arg="{"charm":10}"]
+- What's actually going on? Talk to me.
+	ember (crying): I've been hurt before. Badly. I don't want that again. (Vulnerability risk)
+	do GameManager.apply_vulnerability_risk(20, 0.6)
+	if {last_vulnerability_success} == true:
+		ember (sad): I don't usually say that part out loud. Thank you for not flinching.
+	else:
+		ember (crying): I probably shouldn't have said that yet. Forget I did.
+	- Thank you for trusting me with it.
+		ember: Thank you for not running when I said it. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+	- You don't have to explain further if you're not ready.
+		ember (sad): That's exactly the right thing to say. (Vulnerability risk)
+		do GameManager.apply_vulnerability_risk(10, 0.65)
+		if {last_vulnerability_success} == true:
+			ember: I'll tell you more when I'm ready. Just not today.
+		else:
+			ember (sad): I don't know when "ready" is supposed to feel like. Sorry.
+- Whatever it is, I'm not going anywhere.
+	ember: I believe you. I really do. (+20 Trust)
+	[signal arg_type="dict" arg="{"trust":20}"]
+	ember: That's not something I say lightly, either. Believing people, I mean.
+	- I won't give you a reason to doubt it.
+		ember: I'm going to hold onto that. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+	- Then let's not waste today doubting it.
+		ember: Practical. I like that about you. (+10 Wit)
+		[signal arg_type="dict" arg="{"wit":10}"]
+ember: Thank you. Genuinely.
+ember: Let's get through today. One thing at a time.
+do GameManager.end_dialauge()

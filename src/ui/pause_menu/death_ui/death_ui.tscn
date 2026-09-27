@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://bruumvan3ucky"]
+
+[ext_resource type="FontFile" uid="uid://pa1rlsqofepk" path="res://assets/art/ui/fonts/ThaleahFat.ttf" id="1_013d3"]
+[ext_resource type="Script" uid="uid://cmvkffa4l5ov0" path="res://src/ui/pause_menu/death_ui/death_ui.gd" id="1_reqcu"]
+[ext_resource type="FontFile" uid="uid://diu76rm326vmy" path="res://assets/art/ui/fonts/new-gen.ttf" id="2_reqcu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_slhpx"]
+font = ExtResource("1_013d3")
+font_size = 64
+font_color = Color(1, 0.32086813, 0.2716998, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rbkho"]
+font = ExtResource("2_reqcu")
+
+[node name="DeathUI" type="Control" unique_id=1310621107]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_reqcu")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1872809963]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1227464529]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1746667602]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1481907197]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "You died"
+label_settings = SubResource("LabelSettings_slhpx")
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1026718520]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+color = Color(0.19641912, 0.19641912, 0.19641912, 0.795)
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1585297182]
+layout_mode = 2
+text = "You failed at defending your relationship with Ember. Now it is up to you to etiher try again, or give her up."
+label_settings = SubResource("LabelSettings_rbkho")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1659800158]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="RestartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=369189583]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_013d3")
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=370411505]
+custom_minimum_size = Vector2(62, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_013d3")
+text = "Quit"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

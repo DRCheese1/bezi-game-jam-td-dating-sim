@@ -22,6 +22,7 @@ curve = SubResource("Curve2D_t2i1b")
 script = ExtResource("2_valra")
 
 [node name="MapAllowedArea" type="Area2D" parent="." unique_id=1860083540]
+visible = false
 collision_layer = 2
 collision_mask = 0
 

@@ -1,4 +1,42 @@
-join ember right
-ember: continue
-[signal arg_type="dict" arg="{"charm":50}"]
+join ember (normal) right [animation="Fade In"]
+ember: You came back!
+ember: I half-expected yesterday to scare you off, honestly.
+ember: How are you holding up?
+[wait time="0.1"]
+- Every second was worth it.
+	ember (smug): Okay, now you're just trying to make me blush. (+20 Charm)
+	[signal arg_type="dict" arg="{"charm":20}"]
+	ember: Is that a tactic, or do you actually mean it?
+	- Both, honestly.
+		ember: At least you're honest about the tactic part. (+10 Charm)
+		[signal arg_type="dict" arg="{"charm":10}"]
+	- I mean it. No tactics.
+		ember: Okay. I believe you. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+- Educational. I learned a lot about doubt, mostly.
+	ember: Ha! Yeah, that one doesn't quit, does it. (+20 Wit)
+	[signal arg_type="dict" arg="{"wit":20}"]
+	ember: Did it get to you at all? Be honest.
+	- A little. Didn't stop me though.
+		ember: That's really all I can ask for. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+	- Not even a little. I had it handled.
+		ember: Confident. I like that. (+10 Charm)
+		[signal arg_type="dict" arg="{"charm":10}"]
+- I just wanted to make sure you were okay.
+	ember: That means more to me than you'd think. (+20 Trust)
+	[signal arg_type="dict" arg="{"trust":20}"]
+	ember: Not everyone checks in like that. Why do you?
+	- Because it matters to me that you're okay.
+		ember (sad): Okay. That's... a lot, in a good way. (Vulnerability risk)
+		do GameManager.apply_vulnerability_risk(10, 0.6)
+		if {last_vulnerability_success} == true:
+			ember: I don't say this often, but — thank you. Really.
+		else:
+			ember (sad): I don't really know what to do with someone saying that. Give me a second.
+	- Habit, I guess. I look out for people.
+		ember: A good habit to have. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+ember: Anyway. I have a feeling today won't be any quieter than yesterday.
+ember: Ready?
 do GameManager.end_dialauge()

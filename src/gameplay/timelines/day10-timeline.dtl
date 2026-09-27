@@ -1,0 +1,45 @@
+join ember (normal) right [animation="Fade In"]
+ember: This is it, huh?
+ember: Everything we've built, all coming down to today.
+ember (sad): Whatever happens after this, I wanted you to know something first.
+[wait time="0.1"]
+- Whatever you need to say, I'm listening.
+	ember (broken_heart): I've never let anyone this close before. You changed that. (Vulnerability risk)
+	do GameManager.apply_vulnerability_risk(26, 0.8)
+	if {last_vulnerability_success} == true:
+		ember (crying): I don't know what I would've done without these ten days.
+	else:
+		ember (broken_heart): I don't know why that was so hard to say. I'm sorry if it was too much.
+	- I'll be here for the eleventh, too.
+		ember (broken_heart): Please be. (Vulnerability risk)
+		do GameManager.apply_vulnerability_risk(12, 0.8)
+		if {last_vulnerability_success} == true:
+			ember: I'm going to hold onto that promise.
+		else:
+			ember (sad): I want to believe that's true. I'm trying to.
+	- You don't need to know. You just need today.
+		ember (sad): Okay. Today, then. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+- You don't need to say anything. I already know.
+	ember: Somehow, that's exactly the right answer. (+26 Charm)
+	[signal arg_type="dict" arg="{"charm":26}"]
+	ember: You always seem to know the right answer.
+	- I just know you. That's all it takes.
+		ember: I hope that's always true. (+12 Charm)
+		[signal arg_type="dict" arg="{"charm":12}"]
+	- Ten days will do that to a person.
+		ember (smug): Fair. Ten very eventful days. (+10 Wit)
+		[signal arg_type="dict" arg="{"wit":10}"]
+- We've made it this far. We'll make it through today too.
+	ember: Together, then. Like always. (+26 Trust)
+	[signal arg_type="dict" arg="{"trust":26}"]
+	ember: "Like always." I like that we can say that now.
+	- Like always. However long that ends up being.
+		ember (sad): However long. I'll take it. (+12 Trust)
+		[signal arg_type="dict" arg="{"trust":12}"]
+	- Then let's make today count.
+		ember: Let's. (+10 Charm)
+		[signal arg_type="dict" arg="{"charm":10}"]
+ember: No more waiting, then.
+ember: Let's finish this. Whatever "this" turns out to be.
+do GameManager.end_dialauge()

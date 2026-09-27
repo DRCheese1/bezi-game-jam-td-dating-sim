@@ -1,0 +1,42 @@
+join ember (normal) right [animation="Fade In"]
+ember (shocked): Tomorrow's a big one. I can just feel it.
+ember (sad): I'm terrified, if I'm being honest with you.
+ember: I haven't let myself feel that in a long time.
+[wait time="0.1"]
+- I've got you. No matter what comes.
+	ember: I needed that more than words can really say. (+24 Charm)
+	[signal arg_type="dict" arg="{"charm":24}"]
+	ember: Say it again tomorrow. I might need it twice.
+	- I'll say it as many times as you need.
+		ember: I'm going to hold you to that. (+10 Charm)
+		[signal arg_type="dict" arg="{"charm":10}"]
+	- You won't need it twice. You've got this.
+		ember: I hope you're right. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+- Then let's be terrified together.
+	ember: Oddly comforting. I'll take it. (+24 Wit)
+	[signal arg_type="dict" arg="{"wit":24}"]
+	ember: Terrified together sounds better than terrified alone, at least.
+	- Everything's better together. Even the scary parts.
+		ember (sad): Especially the scary parts, maybe. (Vulnerability risk)
+		do GameManager.apply_vulnerability_risk(10, 0.75)
+		if {last_vulnerability_success} == true:
+			ember: I think I actually believe that, coming from you.
+		else:
+			ember (sad): I want to believe that. I'm just not there yet.
+	- Then let's just get it over with.
+		ember: Straight to business. I respect it. (+10 Wit)
+		[signal arg_type="dict" arg="{"wit":10}"]
+- I trust you. And I trust us.
+	ember: "Us." I really like the sound of that word. (+24 Trust)
+	[signal arg_type="dict" arg="{"trust":24}"]
+	ember: I haven't said that word in a long time either.
+	- Say it as much as you want from now on.
+		ember: I might just do that. (+10 Trust)
+		[signal arg_type="dict" arg="{"trust":10}"]
+	- Then let's give tomorrow a reason to prove it right.
+		ember: Now that's the spirit. (+10 Charm)
+		[signal arg_type="dict" arg="{"charm":10}"]
+ember: Okay. Deep breath.
+ember: Let's do this. Together, whatever happens.
+do GameManager.end_dialauge()

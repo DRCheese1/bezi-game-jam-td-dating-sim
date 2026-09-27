@@ -22,7 +22,7 @@
 "image": "\"res://assets/art/characters/people/ember_broken_heart.png\""
 },
 "mirror": false,
-"offset": Vector2(0, 0),
+"offset": Vector2(0, -96),
 "scale": 1,
 "scene": ""
 },
@@ -31,7 +31,7 @@
 "image": "\"res://assets/art/characters/people/ember_crying.png\""
 },
 "mirror": false,
-"offset": Vector2(0, 0),
+"offset": Vector2(0, -96),
 "scale": 1,
 "scene": ""
 },
@@ -49,7 +49,7 @@
 "image": "\"res://assets/art/characters/people/ember_sad.png\""
 },
 "mirror": false,
-"offset": Vector2(0, 0),
+"offset": Vector2(0, -96),
 "scale": 1,
 "scene": ""
 },
@@ -58,7 +58,7 @@
 "image": "\"res://assets/art/characters/people/ember_shocked.png\""
 },
 "mirror": false,
-"offset": Vector2(0, 0),
+"offset": Vector2(0, -96),
 "scale": 1,
 "scene": ""
 },
@@ -67,16 +67,16 @@
 "image": "\"res://assets/art/characters/people/ember_confused_shocked.png\""
 },
 "mirror": false,
-"offset": Vector2(0, 0),
+"offset": Vector2(0, -96),
 "scale": 1,
 "scene": ""
 },
-"weird": {
+"smug": {
 "export_overrides": {
 "image": "\"res://assets/art/characters/people/ember_weird.png\""
 },
 "mirror": false,
-"offset": Vector2(0, 0),
+"offset": Vector2(0, -96),
 "scale": 1,
 "scene": ""
 }

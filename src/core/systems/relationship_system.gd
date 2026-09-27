@@ -44,8 +44,10 @@ func apply_vulnerability_risk(amount: float, success_chance: float) -> void:
 	# High-risk currency: can backfire if relationship isn't ready
 	if randf() < success_chance:
 		add_currency("vulnerability", amount * 2.0)  # payoff
+		Dialogic.VAR.last_vulnerability_success = true
 	else:
 		modify_relationship(-amount * 0.5)  # backfire hurts relationship instead
+		Dialogic.VAR.last_vulnerability_success = false
 
 func modify_relationship(delta: float) -> void:
 	relationship_health = clampf(relationship_health + delta, 0.0, 100.0)

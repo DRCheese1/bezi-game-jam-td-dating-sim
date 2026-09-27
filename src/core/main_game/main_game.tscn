@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bqekjwyhtrd4p" path="res://src/ui/hud/main_hud.tscn" id="8_86u7o"]
 [ext_resource type="Resource" uid="uid://bdfm8434sc5ta" path="res://src/resources/tower_definitons/flirt_tower.tres" id="8_llqnb"]
 [ext_resource type="PackedScene" uid="uid://y1uj6rdpfp34" path="res://src/core/systems/building/tower_preview.tscn" id="10_e0ob3"]
+[ext_resource type="Script" uid="uid://cff6ligobq4ks" path="res://src/ui/pause_menu/pause_root.gd" id="13_2dcal"]
+[ext_resource type="PackedScene" uid="uid://bruumvan3ucky" path="res://src/ui/pause_menu/death_ui/death_ui.tscn" id="14_bxejg"]
 
 [node name="MainGame" type="Node" unique_id=1086910331]
 process_mode = 3
@@ -100,6 +102,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("13_2dcal")
+
+[node name="DeathUI" parent="PauseLayer/PauseRoot" unique_id=1310621107 instance=ExtResource("14_bxejg")]
+visible = false
+layout_mode = 1
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1292398966]
 process_mode = 3

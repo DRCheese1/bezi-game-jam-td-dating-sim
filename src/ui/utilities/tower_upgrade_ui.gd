@@ -2,6 +2,8 @@ extends Control
 
 const MARGIN := 25.0
 
+static var currently_open: Control
+
 # Utility variables
 var tower: BaseTower
 var upgrade_a: UpgradeData
@@ -30,7 +32,20 @@ var upgrade_b: UpgradeData
 @onready var upgrade_b_desc: Label = $PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/UpgradeBPanel/HBoxContainer/UpgradeBDesc
 @onready var lock_texture_b: TextureRect = $PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2/LockTextureB
 
+func _unhandled_input(event: InputEvent) -> void:
+	if not visible:
+		return
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var click_pos: Vector2 = get_viewport().get_mouse_position()
+		if not panel.get_global_rect().has_point(click_pos):
+			hide_ui()
+			get_viewport().set_input_as_handled()
+
 func show_ui(currenct_tower: BaseTower) -> void:
+	if currently_open != self and is_instance_valid(currently_open):
+		currently_open.hide_ui()
+	
+	currently_open = self
 	tower = currenct_tower
 	
 	var tower_data: TowerData = tower.tower
@@ -59,6 +74,11 @@ func _show_info() -> void:
 
 
 func _init_path_a(path: Array[UpgradeData], tier: int) -> void:
+	if tier > path.size():
+		upgrade_a_panel.modulate = Color(0.5, 0.5, 0.5, 1.0)
+		upgrade_a_buy_button.disabled = true
+		upgrade_a_buy_button.text = "Max"
+	
 	var upgrade: UpgradeData = path[tier]
 	upgrade_a = upgrade
 	
@@ -75,6 +95,11 @@ func _init_path_a(path: Array[UpgradeData], tier: int) -> void:
 
 
 func _init_path_b(path: Array[UpgradeData], tier: int) -> void:
+	if tier > path.size():
+		upgrade_b_panel.modulate = Color(0.5, 0.5, 0.5, 1.0)
+		upgrade_b_buy_button.disabled = true
+		upgrade_b_buy_button.text = "Max"
+	
 	var upgrade: UpgradeData = path[tier]
 	upgrade_b = upgrade
 	
