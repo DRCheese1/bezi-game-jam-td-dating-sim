@@ -39,4 +39,4 @@ ember: So, tell me. What brings you here?
 		[signal arg_type="dict" arg="{"wit":10}"]
 ember: Well, whatever brought you here, I'm glad you came.
 ember: Something tells me it's about to get busy, though.
-do GameManager.end_dialauge()
+do GameManager.end_dialogue()

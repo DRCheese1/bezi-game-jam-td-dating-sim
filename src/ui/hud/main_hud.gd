@@ -13,19 +13,8 @@ var relationship_system: System
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	building_system = GameManager.access_system("Building")
-	relationship_system = GameManager.access_system("Relationship")
-	
-	if not building_system:
-		for i in range(3):
-			push_warning("No building system found, attempt: ", str(i+1))
-			building_system = GameManager.access_system("building")
-			
-			if not building_system:
-				await get_tree().create_timer(0.5).timeout
-		
-		if not building_system:
-			GameManager.fatal_error("Building system not found.")
+	building_system = await GameManager.access_system_when_ready(SystemNames.BUILDING)
+	relationship_system = await GameManager.access_system_when_ready(SystemNames.RELATIONSHIP)
 	
 	relationship_system.currency_changed.connect(update_currency)
 	

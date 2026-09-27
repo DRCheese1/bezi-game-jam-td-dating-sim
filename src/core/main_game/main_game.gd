@@ -28,11 +28,11 @@ func _ready() -> void:
 	
 	GameManager.tower_root = tower_root
 	GameManager.entity_root = entity_root
-	GameManager.access_system("Relationship").relationship_failed.connect(_on_relationship_failed)
-	spawn_system = GameManager.access_system("WaveSpawner")
+	GameManager.access_system(SystemNames.RELATIONSHIP).relationship_failed.connect(_on_relationship_failed)
+	spawn_system = GameManager.access_system(SystemNames.WAVE_SPAWNER)
 	GameManager.hud_root = hud_root
 	
-	GameManager.start_dialauge("main-timeline")
+	GameManager.start_dialogue("main-timeline")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -51,4 +51,4 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_relationship_failed():
 	print("ded")
-	GameManager.start_dialauge("death-timeline")
+	GameManager.start_dialogue("death-timeline")

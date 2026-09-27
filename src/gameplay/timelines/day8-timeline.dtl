@@ -38,4 +38,4 @@ ember: Most people take the easy thing.
 		ember: That's what makes it land. (+10 Trust)
 		[signal arg_type="dict" arg="{"trust":10}"]
 ember: Whatever's coming next, let's keep proving it. One day at a time.
-do GameManager.end_dialauge()
+do GameManager.end_dialogue()

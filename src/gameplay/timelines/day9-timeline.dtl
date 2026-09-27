@@ -39,4 +39,4 @@ ember: I haven't let myself feel that in a long time.
 		[signal arg_type="dict" arg="{"charm":10}"]
 ember: Okay. Deep breath.
 ember: Let's do this. Together, whatever happens.
-do GameManager.end_dialauge()
+do GameManager.end_dialogue()

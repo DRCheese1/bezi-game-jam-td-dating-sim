@@ -41,4 +41,4 @@ ember (sad): I feel like I'm failing you by even letting it get to me.
 		ember: Having options is nice, actually. (+10 Trust)
 		[signal arg_type="dict" arg="{"trust":10}"]
 ember (sad): Let's put it behind us. Literally, if we have to.
-do GameManager.end_dialauge()
+do GameManager.end_dialogue()

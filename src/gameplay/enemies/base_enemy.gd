@@ -17,7 +17,7 @@ var health: int
 
 func _ready() -> void:
 	visible = false
-	relationship_system = GameManager.access_system("Relationship")
+	relationship_system = GameManager.access_system(SystemNames.RELATIONSHIP)
 	relationship_system.relationship_failed.connect(despawn)
 	
 	progress_bar.max_value = enemy_data.health
@@ -87,7 +87,7 @@ func _punch_scale() -> void:
 	punch_tween.tween_property(sprite_2d, "scale", Vector2.ONE, 0.45).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 func _die():
-	var wave_system = GameManager.access_system("WaveSpawner")
+	var wave_system = GameManager.access_system(SystemNames.WAVE_SPAWNER)
 	_add_currency()
 	wave_system.enemy_count -= 1
 	queue_free()
@@ -113,7 +113,7 @@ func _weighted_pick_from_arrays(items: Array[String], weights: Array[float], tot
 
 func _reached_end() -> void:
 	print("Reached end")
-	var wave_system = GameManager.access_system("WaveSpawner")
+	var wave_system = GameManager.access_system(SystemNames.WAVE_SPAWNER)
 	wave_system.enemy_count -= 1
 	relationship_system.modify_relationship(-enemy_data.damage)
 	queue_free()

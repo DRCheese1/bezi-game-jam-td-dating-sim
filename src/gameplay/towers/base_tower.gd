@@ -29,7 +29,7 @@ var relationship_system: System
 
 
 func _ready() -> void:
-	relationship_system = GameManager.access_system("Relationship")
+	relationship_system = GameManager.access_system(SystemNames.RELATIONSHIP)
 	collision_shape_2d.shape = collision_shape_2d.shape.duplicate()
 	
 	fire_rate = tower.fire_rate
@@ -57,25 +57,27 @@ func _on_attack_timer_timeout() -> void:
 	can_attack = true
 	_attack()
 
-func _attack():
+func _attack() -> void:
 	targets = targets.filter(func(t): return is_instance_valid(t))
 	
 	if targets.is_empty():
 		return
 	
-	var target: BaseEnemy = _choose_target()
-	if target.has_method("take_damage"):
-		target.take_damage(damage)
+	for target in _choose_targets():
+		if target.has_method("take_damage"):
+			target.take_damage(damage)
 	
 	can_attack = false
 	attack_timer.start()
 
-func _choose_target() -> BaseEnemy:
-	var best = targets[0]
+## Override this in subclasses to change targeting (e.g. multishot).
+## Base behavior: hit the single enemy furthest along the path.
+func _choose_targets() -> Array[BaseEnemy]:
+	var best: BaseEnemy = targets[0]
 	for t in targets:
 		if t.distance > best.distance:
 			best = t
-	return best
+	return [best]
 
 # -<>- Attack Logic -<>-
 

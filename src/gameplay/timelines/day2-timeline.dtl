@@ -39,4 +39,4 @@ ember: How are you holding up?
 		[signal arg_type="dict" arg="{"trust":10}"]
 ember: Anyway. I have a feeling today won't be any quieter than yesterday.
 ember: Ready?
-do GameManager.end_dialauge()
+do GameManager.end_dialogue()

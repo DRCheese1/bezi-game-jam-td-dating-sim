@@ -23,7 +23,7 @@ var dead: bool = false
 
 func _ready() -> void:
 	GameManager.register_system(system_name, self)
-	GameManager.access_system("Relationship").relationship_failed.connect(func(): dead = true)
+	GameManager.access_system(SystemNames.RELATIONSHIP).relationship_failed.connect(func(): dead = true)
 	
 	for enemy in enemy_pool:
 		enemy.capture_base_stats()
@@ -46,7 +46,7 @@ func next_wave_sequence():
 		for enemy in enemy_pool:
 			_scale_enemy_data(enemy, day_multiplier)
 	
-	GameManager.start_dialauge("day%s-timeline" % day_count)
+	GameManager.start_dialogue("day%s-timeline" % day_count)
 
 func _spawn_wave(current_wave: int):
 	if path_2d == null:
@@ -85,9 +85,6 @@ func _generate_wave(budget: float, current_wave: int) -> Array[Array]:
 		
 		var group_size := randi_range(enemy_type.min_group_size, max_affordable)
 		var group_cost := enemy_type.cost * group_size
-		
-		if group_cost > remaining:
-			continue
 		
 		var group: Array[EnemyData] = []
 		for i in group_size:

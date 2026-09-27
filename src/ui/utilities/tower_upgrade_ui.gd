@@ -41,12 +41,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			hide_ui()
 			get_viewport().set_input_as_handled()
 
-func show_ui(currenct_tower: BaseTower) -> void:
+func show_ui(current_tower: BaseTower) -> void:
 	if currently_open != self and is_instance_valid(currently_open):
 		currently_open.hide_ui()
 	
 	currently_open = self
-	tower = currenct_tower
+	tower = current_tower
 	
 	var tower_data: TowerData = tower.tower
 	var path_a: Array[UpgradeData] = tower_data.path_a
@@ -74,45 +74,43 @@ func _show_info() -> void:
 
 
 func _init_path_a(path: Array[UpgradeData], tier: int) -> void:
-	if tier > path.size():
-		upgrade_a_panel.modulate = Color(0.5, 0.5, 0.5, 1.0)
-		upgrade_a_buy_button.disabled = true
-		upgrade_a_buy_button.text = "Max"
-	
-	var upgrade: UpgradeData = path[tier]
-	upgrade_a = upgrade
-	
-	upgrade_a_name.text = upgrade.upgrade_name
-	upgrade_a_desc.text = upgrade.description
-	upgrade_a_buy_button.text = str(upgrade.cost)
-	upgrade_a_buy_button.icon = upgrade.cost_icon
-	
-	if not tower.can_upgrade_path("a"):
-		upgrade_a_panel.modulate = Color(0.5, 0.5, 0.5, 1.0)
-		upgrade_a_buy_button.disabled = true
-		upgrade_a_buy_button.text = "Locked"
-		lock_texture_a.visible = true
+	upgrade_a = _init_path(path, tier, "a", upgrade_a_panel, upgrade_a_name, upgrade_a_desc, upgrade_a_buy_button, lock_texture_a)
 
 
 func _init_path_b(path: Array[UpgradeData], tier: int) -> void:
-	if tier > path.size():
-		upgrade_b_panel.modulate = Color(0.5, 0.5, 0.5, 1.0)
-		upgrade_b_buy_button.disabled = true
-		upgrade_b_buy_button.text = "Max"
+	upgrade_b = _init_path(path, tier, "b", upgrade_b_panel, upgrade_b_name, upgrade_b_desc, upgrade_b_buy_button, lock_texture_b)
+
+
+## Shared by both upgrade paths. Returns the upgrade shown (or null if maxed)
+## so the caller can stash it in upgrade_a / upgrade_b.
+func _init_path(path: Array[UpgradeData], tier: int, path_id: String, panel_node: PanelContainer, name_label_node: Label, desc_label_node: Label, buy_button: Button, lock_texture: TextureRect) -> UpgradeData:
+	# Reset to the "available" look first - without this, a path that was
+	# ever shown as Max/Locked stayed gray and disabled even after it
+	# became purchasable again (e.g. once the other path stopped blocking it).
+	panel_node.modulate = Color.WHITE
+	buy_button.disabled = false
+	lock_texture.visible = false
+	
+	if tier >= path.size():
+		panel_node.modulate = Color(0.5, 0.5, 0.5, 1.0)
+		buy_button.disabled = true
+		buy_button.text = "Max"
+		return null
 	
 	var upgrade: UpgradeData = path[tier]
-	upgrade_b = upgrade
 	
-	upgrade_b_name.text = upgrade.upgrade_name
-	upgrade_b_desc.text = upgrade.description
-	upgrade_b_buy_button.text = str(upgrade.cost)
-	upgrade_b_buy_button.icon = upgrade.cost_icon
+	name_label_node.text = upgrade.upgrade_name
+	desc_label_node.text = upgrade.description
+	buy_button.text = str(upgrade.cost)
+	buy_button.icon = upgrade.cost_icon
 	
-	if not tower.can_upgrade_path("b"):
-		upgrade_b_panel.modulate = Color(0.5, 0.5, 0.5, 1.0)
-		upgrade_b_buy_button.disabled = true
-		upgrade_b_buy_button.text = "Locked"
-		lock_texture_b.visible = true
+	if not tower.can_upgrade_path(path_id):
+		panel_node.modulate = Color(0.5, 0.5, 0.5, 1.0)
+		buy_button.disabled = true
+		buy_button.text = "Locked"
+		lock_texture.visible = true
+	
+	return upgrade
 
 
 func _flip_to_fit_screen() -> void:
@@ -148,7 +146,7 @@ func _flip_to_fit_screen() -> void:
 		grow_vertical = Control.GROW_DIRECTION_BEGIN
 
 
-func _show_differnces(path: String, tier: int) -> void:
+func _show_differences(path: String, tier: int) -> void:
 	var path_array: Array[UpgradeData]
 	if path == "a":
 		path_array = tower.tower.path_a
@@ -156,6 +154,9 @@ func _show_differnces(path: String, tier: int) -> void:
 		path_array = tower.tower.path_b
 	else:
 		return
+	
+	if tier >= path_array.size():
+		return  # path is maxed - nothing further to preview
 	
 	var upgrade: UpgradeData = path_array[tier]
 	
@@ -168,7 +169,7 @@ func _show_differnces(path: String, tier: int) -> void:
 
 
 func _on_upgrade_a_panel_mouse_entered() -> void:
-	_show_differnces("a", tower.path_a_tier)
+	_show_differences("a", tower.path_a_tier)
 
 
 func _on_upgrade_a_panel_mouse_exited() -> void:
@@ -176,7 +177,7 @@ func _on_upgrade_a_panel_mouse_exited() -> void:
 
 
 func _on_upgrade_b_panel_mouse_entered() -> void:
-	_show_differnces("b", tower.path_b_tier)
+	_show_differences("b", tower.path_b_tier)
 
 
 func _on_upgrade_b_panel_mouse_exited() -> void:

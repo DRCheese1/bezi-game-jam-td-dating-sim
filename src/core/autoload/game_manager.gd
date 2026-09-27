@@ -22,6 +22,23 @@ func access_system(system_name: String, sub_system: String = "") -> System:
 		return null
 	return child as System
 
+## Like access_system, but waits if the system hasn't registered yet.
+## Use this from _ready() where autoload/scene ordering means the system
+## you need might not exist for the first frame or two. Waits one frame
+## at a time (not a fixed sleep) so it grabs the system the instant it's
+## ready, and calls fatal_error if it never shows up within timeout_seconds.
+func access_system_when_ready(system_name: String, timeout_seconds: float = 3.0) -> System:
+	var elapsed := 0.0
+	while not systems.has(system_name) and elapsed < timeout_seconds:
+		await get_tree().process_frame
+		elapsed += get_process_delta_time()
+	
+	if not systems.has(system_name):
+		fatal_error("%s system not found." % system_name, "Timed out waiting for system: " + system_name)
+		return null
+	
+	return systems[system_name]
+
 func register_system(system_name: String, system: System) -> void:
 	if systems.has(system_name):
 		push_error("System already registered: " + system_name)
@@ -37,18 +54,18 @@ func fatal_error(message: String, debug_message: String = ""):
 	
 	get_tree().quit(1)
 
-func start_dialauge(timeline_name: String):
+func start_dialogue(timeline_name: String):
 	hud_root.visible = false
-	print("Dialauge started")
+	print("Dialogue started")
 	Dialogic.start(timeline_name)
 
-func end_dialauge():
+func end_dialogue():
 	hud_root.visible = true
-	var wave_system: System = access_system("WaveSpawner")
+	var wave_system: System = access_system(SystemNames.WAVE_SPAWNER)
 	wave_system.next_wave_sequence()
 
 func apply_vulnerability_risk(amount: float, success_chance: float) -> void:
-	var relationship = access_system("Relationship")
+	var relationship = access_system(SystemNames.RELATIONSHIP)
 	relationship.apply_vulnerability_risk(amount, success_chance)
 
 func reset_gamemanager() -> void:

@@ -42,4 +42,4 @@ ember: I keep wondering if I'm asking too much of you, showing up like this.
 		[signal arg_type="dict" arg="{"wit":10}"]
 ember: Thank you. Genuinely.
 ember: Let's get through today. One thing at a time.
-do GameManager.end_dialauge()
+do GameManager.end_dialogue()

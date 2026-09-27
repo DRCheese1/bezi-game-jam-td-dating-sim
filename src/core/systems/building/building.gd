@@ -10,18 +10,7 @@ var relationship_system: System
 
 func _ready() -> void:
 	GameManager.register_system(system_name, self)
-	
-	relationship_system = GameManager.access_system("Relationship")
-	if not relationship_system:
-		for i in range(3):
-			push_warning("No relationship system found, attempt: ", str(i+1))
-			relationship_system = GameManager.access_system("relationship")
-			
-			if not relationship_system:
-				await get_tree().create_timer(0.5).timeout
-		
-		if not relationship_system:
-			GameManager.fatal_error("Relationship system not found.")
+	relationship_system = await GameManager.access_system_when_ready(SystemNames.RELATIONSHIP)
 
 func tower_selected(tower):
 	if selected_tower == tower:

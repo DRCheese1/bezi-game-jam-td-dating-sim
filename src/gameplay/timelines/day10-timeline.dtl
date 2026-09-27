@@ -42,4 +42,4 @@ ember (sad): Whatever happens after this, I wanted you to know something first.
 		[signal arg_type="dict" arg="{"charm":10}"]
 ember: No more waiting, then.
 ember: Let's finish this. Whatever "this" turns out to be.
-do GameManager.end_dialauge()
+do GameManager.end_dialogue()

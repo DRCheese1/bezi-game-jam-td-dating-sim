@@ -41,4 +41,4 @@ ember (sad): I don't know how I feel about it, and that scares me a little.
 		ember: Deal. (+10 Trust)
 		[signal arg_type="dict" arg="{"trust":10}"]
 ember (sad): Let's just focus on today. I'll figure the rest out.
-do GameManager.end_dialauge()
+do GameManager.end_dialogue()

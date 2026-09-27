@@ -38,4 +38,4 @@ ember (smug): Can I be a little vain and ask how I'm doing? Be honest.
 			ember (sad): I don't know why that's harder to say than it should be.
 ember: Okay, enough vanity for one day.
 ember: Let's not let it go to my head before the wave hits.
-do GameManager.end_dialauge()
+do GameManager.end_dialogue()

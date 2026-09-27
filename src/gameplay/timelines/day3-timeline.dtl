@@ -42,4 +42,4 @@ ember: You don't have to answer that. I just... find myself wondering.
 		[signal arg_type="dict" arg="{"wit":10}"]
 ember: I don't know why I asked that. Maybe I just needed to hear it.
 ember: Let's get moving before I overthink it further.
-do GameManager.end_dialauge()
+do GameManager.end_dialogue()
